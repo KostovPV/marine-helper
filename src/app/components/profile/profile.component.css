@@ -18,9 +18,23 @@
 
 .form-container {
   max-width: 400px;
+  
+  /* display: flex;
+  align-items: center; */
 }
 
 .row {
   display: flex;
   gap: 16px;
+}
+.form-container{
+  max-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  /* flex-wrap: nowrap; */
+  flex-direction: column;
+  align-content: space-around;
+  /* position: absolute; */
+  margin: 350px;
+  align-items: stretch;
 }
