@@ -1,0 +1,6 @@
+
+<div id="home-intro" class="home-section">
+    <ng-container class="home-intro" *ngIf="user$ | async as user">
+        <h1>Welcome to the home page, {{user.displayName}}!</h1>
+    </ng-container>
+</div>

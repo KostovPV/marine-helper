@@ -1,0 +1,18 @@
+.footer-container{
+    height: 40px;
+    width: 100%;
+    background: rgb(0, 128, 182);
+    background: linear-gradient(
+      0deg,
+      rgb(111, 173, 200) 0%,
+      rgb(77, 147, 177) 35%,
+      rgb(38, 121, 138) 100%
+    );
+}
+.text-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-content: flex-start; */
+    padding: 10px;
+}

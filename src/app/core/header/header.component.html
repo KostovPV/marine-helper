@@ -1,0 +1,45 @@
+<header>
+    <div class="mini-navbar-wrap">
+      <div class="logo-wrap">
+        <p class="logo"><span class="logo">Marine solutions center</span></p>
+      </div>
+  
+    </div>
+    <nav>
+      <ul>
+        <li >
+          <a routerLink="/home">Home</a>
+        </li>
+        <li >
+          <a routerLink="/jobs/list" >Opened jobs</a>
+        </li>
+        <!-- <li>
+          <a routerLink="/find">Job seekers</a>
+        </li> -->
+        <!-- <li>
+          <a routerLink="/profile">Profile</a>
+        </li> -->
+       
+          
+            <li *ngIf="!isAuthenticated">
+              <a routerLink="/login">Login</a>
+            </li>
+            <li *ngIf="!isAuthenticated">
+              <a routerLink="/sign-up">Register</a>
+            </li>
+          
+    
+<!--          
+            <li >
+              <a>Logged in as {{email}}</a>
+            </li> -->
+          
+       
+      
+       
+        <li *ngIf="isAuthenticated">
+          <a (click)="onLogout()">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
