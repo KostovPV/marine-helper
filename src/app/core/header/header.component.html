@@ -10,13 +10,13 @@
       <li>
         <a routerLink="/home">Home</a>
       </li>
-      <li>
+      <li *ngIf="isAuthenticated">
         <a routerLink="/jobs/list">Opened jobs</a>
       </li>
       <!-- <li>
           <a routerLink="/find">Job seekers</a>
         </li> -->
-      <li>
+      <li *ngIf="isAuthenticated">
         <a routerLink="/profile">My Profile</a>
       </li>
 
@@ -27,13 +27,17 @@
       <li *ngIf="!isAuthenticated">
         <a routerLink="/sign-up">Register</a>
       </li>
-      <li>
+      <li *ngIf="isAuthenticated">
+        <a routerLink="/create">Add job</a>
+      </li>
+      <li *ngIf="isAuthenticated">
+        <a (click)="onLogout()">Logout</a>
+      </li>
+      <li *ngIf="isAuthenticated">
         <div>Logged in as {{email}}</div>
       </li>
     </ul>
   </nav>
 </header>
 
-<!-- <li *ngIf="isAuthenticated">
-          <a (click)="onLogout()">Logout</a>
-        </li> -->
+ 

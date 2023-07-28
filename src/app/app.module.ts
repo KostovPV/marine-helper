@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
@@ -27,6 +27,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
+import { CreateComponent } from './components/create/create.component';
 
 
 
@@ -39,6 +40,7 @@ import { CoreModule } from './core/core.module';
     LandingComponent,
     HomeComponent,
     ProfileComponent,
+    CreateComponent,
   ],
   imports: [
     CoreModule,
@@ -58,7 +60,8 @@ import { CoreModule } from './core/core.module';
     provideStorage(() => getStorage()),
     HotToastModule.forRoot(),
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

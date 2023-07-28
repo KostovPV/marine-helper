@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { JobsListComponent } from './jobs-list/jobs-list.component';
 import { CurrentJobComponent } from './current-job/current-job.component';
-import { NewJobComponent } from './new-job/new-job.component';
+import { EditJobComponent } from './edit-job/edit-job.component';
+
 
 
 const routes: Routes = [
@@ -17,8 +18,8 @@ const routes: Routes = [
         component: CurrentJobComponent,
     },
     {
-        path: 'add-job',
-        component: NewJobComponent,
+        path: 'list/:id/edit',
+        component: EditJobComponent
     }
 
 ];
