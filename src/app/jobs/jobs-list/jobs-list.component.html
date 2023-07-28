@@ -1,32 +1,49 @@
-
-  
-  
-
-      <div *ngFor="let job of jobsList" class="theme-container">
-        <div class="job-name-wrapper">
-          <div class="job-name">
-            <a  class="normal">
-              <h2></h2>
-            </a>
-            <div class="columns">
-              <div>
-                <p>
-                  Date: <time></time>
-                </p>
-                <div class="nick-name">
-                  <p>
-                    Username: <span></span>
-                  </p>
-                </div>
-              </div>
-              <div class="subscribers">
-                <button  class="subscribe">Subscribe</button>
-                <p>
-                  Subscribers: <span></span>
-                </p>
-              </div>
-            </div>
+<div *ngFor="let job of jobsList" class="theme-container">
+  <div class="job-name-wrapper">
+    <div class="job-name">
+      <a class="normal">
+        <h2></h2>
+      </a>
+      <div class="columns">
+        <div>
+          <p>
+            Username: <span>{{job.position}}</span>
+          </p>
+          <div class="age-info">
+            <p>
+              Age: <span>{{job.age}}</span>
+            </p>
+          </div>
+          <div class="age-info">
+            <p>
+              Company: <span>{{job.company}}</span>
+            </p>
+          </div>
+          <div class="image-info">
+            <p>
+              Image:
+            </p>
+           
+            <img src="{{job.imageUrl}}" alt="Image" width="200" height="200">
+          </div>
+          <div class="tel-info">
+            <p>
+              Age: <span>{{job.tel}}</span>
+            </p>
           </div>
         </div>
+        <div class="vesselType-info">
+          <p>
+            vesselType: <span>{{job.vesselType}}</span>
+          </p>
+        </div>
       </div>
-    
+      <div class="subscribers">
+        <button class="subscribe" routerLink="{{job.id}}">Subscribe</button>
+        <p>
+          Subscribers: <span></span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
