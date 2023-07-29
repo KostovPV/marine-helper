@@ -35,7 +35,7 @@ export class JobsStorageService {
 
   createJob(age: string, company: string, position: string,
     imageUrl: string, vesselType: string, tel: string) {
-    const apiUrl ='https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app';
+    const apiUrl = 'https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app';
 
 
     return this.http.post(`${apiUrl}/jobs.json`, { age, company, position, imageUrl, vesselType, tel })
@@ -49,18 +49,27 @@ export class JobsStorageService {
 
   createjob(company: string, age: string, position: string,
     imageUrl: string, vesselType: string, tel: string) {
-      const PROJECT_ID = 'rate-me-a5440'
+    const PROJECT_ID = 'rate-me-a5440'
     const apiUrl = `https://${PROJECT_ID}.firebaseio.com/message_list.json`;
-    this.http.post<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs.json`, { company, age, position, imageUrl, vesselType, tel }).subscribe(responsdata=>{
+    this.http.post<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs.json`, { company, age, position, imageUrl, vesselType, tel }).subscribe(responsdata => {
       console.log(responsdata);
-      
+
     });
   }
 
+  // company: string, age: string, position: string,
+  // imageUrl: string, vesselType: string, tel: string
+
+  updatejob(id: string, value: Jobs) {
+    const PROJECT_ID = 'rate-me-a5440'
+    const apiUrl = `https://${PROJECT_ID}.firebaseio.com/message_list.json`;
+    this.http.put<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs.json`, value).subscribe()
+  };
+}
   // getJobById(id) {
   //   const  apiUrl  = 'https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app';
   //   let job = null
   //   return this.http.get<Jobs>(`${apiUrl}/jobs.json`).pipe(map(job=>{
   //    job.id == id
   //   }));
-}
+

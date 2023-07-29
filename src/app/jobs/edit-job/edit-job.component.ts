@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import { JobsStorageService } from '../jobs.service';
@@ -19,17 +19,9 @@ export class EditJobComponent implements OnInit {
   canEdit: boolean = true;
   userId: any;
   author: any;
+  currentJob: any;
 
-  jobDetails: Jobs = {
-    age: '',
-    company: '',
-    position: '',
-    imageUrl: '',
-    vesselType: '',
-    tel: '',
-    id: '',
-
-  }
+  @ViewChild('jobForm') form: NgForm | undefined;
 
   constructor(private activatedRoute: ActivatedRoute,
     private jobService: JobsStorageService,
@@ -38,36 +30,39 @@ export class EditJobComponent implements OnInit {
     private fb: FormBuilder
   ) { }
 
-  form = this.fb.group({
-    age: ['', [Validators.required]],
-    company: ['', [Validators.required]],
-    position: ['', [Validators.required]],
-    imageUrl: ['', [Validators.required]],
-    vesselType: ['', [Validators.required]],
-    tel: ['', [Validators.required]],
-    id: ['', [Validators.required]],
 
-    // persons: this.fb.array([]),
-  });
 
   ngOnInit(): void {
+    console.log('jobForm', this.form);
     this.activatedRoute.url.subscribe(sa => sa.forEach(value => this.url += `/${value}`));
     // this.activatedRoute.params.subscribe(p => this.id = p['id'])
     this.jobId = this.activatedRoute.snapshot.params['id'];
+    console.log('this.jobId', this.jobId);
+
     this.activatedRoute.url.subscribe(sa => {
       sa.forEach(value => this.url += `/${value}`)
     }
     )
     this.jobService.getJob(this.jobId).subscribe(job => {
-      this.job.age = this.jobDetails.age,
-        this.job.company = this.jobDetails.company,
-        this.job.position = this.jobDetails.position,
-        this.job.imageUrl = this.jobDetails.imageUrl,
-        this.job.vesselType = this.jobDetails.vesselType,
-        this.job.tel = this.jobDetails.tel,
-        this.job.id = this.jobDetails.id
+
+      this.currentJob = job
+      console.log('this.currentJob', this.currentJob);
+      console.log('this.currentJob.age', this.currentJob.age, 'this.currentJob.company ', this.currentJob.company,);
 
     });
+
+
+
+    this.form?.setValue({
+      age: this.currentJob.age,
+      company: this.currentJob.company,
+      position: this.currentJob.position,
+      imageUrl: this.currentJob.imageUrl,
+      vesselType:this.currentJob.vesselType,
+      id: this.currentJob.id,
+      tel: this.currentJob.tel,
+    })
+
 
     // this.jobDetails = {
     //   age,
@@ -90,23 +85,24 @@ export class EditJobComponent implements OnInit {
 
   }
 
-    
 
+
+  editComponentSubmitHandler(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+
+    const { company, age, position, imageUrl, vesselType, tel } = form.value;
+    this.jobService.createJob(age, company, position, imageUrl, vesselType, tel).subscribe(() => {
+      this.router.navigate(['/jobs/list']);
+    });
 
 
 
   }
 
-// editComponentSubmitHandler(form: NgForm): void {
-//   if(form.invalid) {
-//   return;
-// }
+}
 
-// const { company, age, position, imageUrl, vesselType, tel } = form.value;
-// this.jobService.createjob(company, age, position, imageUrl, vesselType, tel).subscribe(() => {
-//   this.router.navigate(['/jobs/list']);
-// });
-//   }
 
 
 

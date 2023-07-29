@@ -32,7 +32,7 @@
           </div>
           <div class="tel-info">
             <p>
-              Age: <span>{{job.tel}}</span>
+              Telephone: <span>{{job.tel}}</span>
             </p>
           </div>
         </div>
@@ -43,6 +43,9 @@
         </div>
       </div>
       <div class="subscribers">
+        <p>
+          Subscribers: <span></span>
+        </p>
         <span *ngIf="!canEdit">
           <button class="subscribe" routerLink="edit">Edit </button>
         </span>
@@ -51,9 +54,7 @@
         </span>
         
 
-        <p>
-          Subscribers: <span></span>
-        </p>
+        
       </div>
     </div>
   </div>
