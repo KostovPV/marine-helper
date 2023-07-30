@@ -17,10 +17,10 @@ export class CreateComponent {
       return;
     }
 
-    const { age, company, string, imageUrl, vesselType, tel } = form.value;
+    const { age, company, position, imageUrl, vesselType, tel } = form.value;
     console.log( form.value);
     
-    this.jobService.createJob(age, company, string, imageUrl, vesselType, tel).subscribe(() => {
+    this.jobService.createJob(age, company, position, imageUrl, vesselType, tel).subscribe(() => {
       this.router.navigate(['/jobs/list']);
     });
   }

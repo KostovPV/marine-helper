@@ -5,8 +5,8 @@
         </div>
         <form #form="ngForm" (ngSubmit)="createJobHandler(form)">
             <div class="new-theme-position">
-                <label for="jobPosition">Position <span class="red">*</span></label>
-                <input type="text" name="jobPosition" id="jobPosition" ngModel #inputName="ngModel" required
+                <label for="position">Position <span class="red">*</span></label>
+                <input type="text" name="position" id="position" ngModel #inputName="ngModel" required
                     minlength="5" />
 
                 <ng-container *ngIf="inputName.touched">
@@ -20,8 +20,8 @@
             </div>
 
             <div class="new-theme-age">
-                <label for="jobAge">Age <span class="red">*</span></label>
-                <textarea type="text" name="jobAge" id="jobAge" class="height" ngModel #inputName="ngModel" required
+                <label for="age">Age <span class="red">*</span></label>
+                <textarea type="text" name="age" id="age" class="height" ngModel #inputName="ngModel" required
                     minlength="2"></textarea>
 
                 <ng-container *ngIf="inputName.touched">
@@ -35,8 +35,8 @@
             </div>
 
             <div class="new-theme-company">
-                <label for="jobCompany">Company <span class="red">*</span></label>
-                <textarea type="text" name="jobCompany" id="jobCompany" class="height" ngModel #inputName="ngModel"
+                <label for="company">Company <span class="red">*</span></label>
+                <textarea type="text" name="company" id="company" class="height" ngModel #inputName="ngModel"
                     required minlength="6"></textarea>
 
                 <ng-container *ngIf="inputName.touched">
@@ -50,8 +50,8 @@
             </div>
 
             <div class="new-theme-image">
-                <label for="jobImage">Image <span class="red">*</span></label>
-                <textarea type="text" name="jobImage" id="jobImage" class="height" ngModel #inputName="ngModel"
+                <label for="imageUrl">Image <span class="red">*</span></label>
+                <textarea type="text" name="imageUrl" id="imageUrl" class="height" ngModel #inputName="ngModel"
                     required></textarea>
 
                 <ng-container *ngIf="inputName.touched">

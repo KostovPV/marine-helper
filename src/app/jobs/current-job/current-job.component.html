@@ -11,16 +11,16 @@
       <div class="columns">
         <div>
           <p>
-            Username: <span>{{job.position}}</span>
+            Username: <span>{{job?.position}}</span>
           </p>
           <div class="age-info">
             <p>
-              Age: <span>{{job.age}}</span>
+              Age: <span>{{job?.age}}</span>
             </p>
           </div>
           <div class="age-info">
             <p>
-              Company: <span>{{job.company}}</span>
+              Company: <span>{{job?.company}}</span>
             </p>
           </div>
           <div class="image-info">
@@ -28,17 +28,17 @@
               Image:
             </p>
            
-            <img src="{{job.imageUrl}}" alt="Image" width="200" height="200">
+            <img src="{{job?.imageUrl}}" alt="Image" width="200" height="200">
           </div>
           <div class="tel-info">
             <p>
-              Telephone: <span>{{job.tel}}</span>
+              Telephone: <span>{{job?.tel}}</span>
             </p>
           </div>
         </div>
         <div class="vesselType-info">
           <p>
-            vesselType: <span>{{job.vesselType}}</span>
+            vesselType: <span>{{job?.vesselType}}</span>
           </p>
         </div>
       </div>
@@ -50,7 +50,7 @@
           <button class="subscribe" routerLink="edit">Edit </button>
         </span>
         <span *ngIf="canEdit">
-          <button class="subscribe" routerLink="{{job.id}}">Subsribe </button>
+          <button class="subscribe" routerLink="{{job?.id}}">Subsribe </button>
         </span>
         
 

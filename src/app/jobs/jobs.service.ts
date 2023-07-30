@@ -60,11 +60,25 @@ export class JobsStorageService {
   // company: string, age: string, position: string,
   // imageUrl: string, vesselType: string, tel: string
 
-  updatejob(id: string, value: Jobs) {
-    const PROJECT_ID = 'rate-me-a5440'
-    const apiUrl = `https://${PROJECT_ID}.firebaseio.com/message_list.json`;
-    this.http.put<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs.json`, value).subscribe()
-  };
+  // updatejob(id: string, value: Jobs) {
+  //   const PROJECT_ID = 'rate-me-a5440'
+  //   const apiUrl = `https://${PROJECT_ID}.firebaseio.com/message_list.json`;
+  //   this.http.put<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs.json`, value).subscribe()
+  // };
+
+  editJob(id: string, data: Jobs) {
+    const body = {
+      id,
+      age: data.age,
+      company: data.company,
+      position: data.position,
+      imageUrl: data.imageUrl,
+      vesselType: data.vesselType,
+      tel: data.tel
+    }
+    return this.http.put<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs/${id}.json`, body)
+  }
+
 }
   // getJobById(id) {
   //   const  apiUrl  = 'https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app';
