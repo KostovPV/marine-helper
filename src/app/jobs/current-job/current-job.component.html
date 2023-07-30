@@ -46,11 +46,11 @@
         <p>
           Subscribers: <span></span>
         </p>
-        <span *ngIf="!canEdit">
+        <span *ngIf="canEdit">
           <button class="subscribe" routerLink="edit">Edit </button>
         </span>
-        <span *ngIf="canEdit">
-          <button class="subscribe" routerLink="{{job?.id}}">Subsribe </button>
+        <span *ngIf="!canEdit">
+          <button class="subscribe" routerLink="jobs/list">Subsribe </button>
         </span>
         
 

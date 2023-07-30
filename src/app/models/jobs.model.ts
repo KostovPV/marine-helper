@@ -6,11 +6,13 @@ export class Jobs {
   public vesselType: string;
   public id: string;
   public tel: string;
+  public author: string;
+
 
   constructor(
     age: string, company: string, position: string,
     imageUrl: string, vesselType: string,
-    tel: string, id: string) {
+    tel: string, id: string, author: string) {
     this.age = age;
     this.position = position;
     this.imageUrl = imageUrl;
@@ -18,6 +20,7 @@ export class Jobs {
     this.vesselType = vesselType;
     this.tel = tel;
     this.id = id;
+    this.author = author;
 
   }
 

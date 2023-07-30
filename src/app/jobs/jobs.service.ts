@@ -34,11 +34,11 @@ export class JobsStorageService {
   }
 
   createJob(age: string, company: string, position: string,
-    imageUrl: string, vesselType: string, tel: string) {
+    imageUrl: string, vesselType: string, tel: string, author: string) {
     const apiUrl = 'https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app';
 
 
-    return this.http.post(`${apiUrl}/jobs.json`, { age, company, position, imageUrl, vesselType, tel })
+    return this.http.post(`${apiUrl}/jobs.json`, { age, company, position, imageUrl, vesselType, tel, author })
 
   }
 
@@ -66,9 +66,10 @@ export class JobsStorageService {
   //   this.http.put<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs.json`, value).subscribe()
   // };
 
-  editJob(id: string, data: Jobs) {
+  editJob(id: string,author: string, data: Jobs) {
     const body = {
       id,
+      author,
       age: data.age,
       company: data.company,
       position: data.position,

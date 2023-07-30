@@ -6,14 +6,14 @@
         <form #form="ngForm" (ngSubmit)="createJobHandler(form)">
             <div class="new-theme-position">
                 <label for="position">Position <span class="red">*</span></label>
-                <input type="text" name="position" id="position" ngModel #inputName="ngModel" required
+                <input type="text" name="position" id="position" ngModel #inputPosition="ngModel" required
                     minlength="5" />
 
-                <ng-container *ngIf="inputName.touched">
-                    <p class="error" *ngIf="inputName.errors?.['required']">
+                <ng-container *ngIf="inputPosition.touched">
+                    <p class="error" *ngIf="inputPosition.errors?.['required']">
                         Position is required.
                     </p>
-                    <p class="error" *ngIf="inputName.errors?.['minlength']">
+                    <p class="error" *ngIf="inputPosition.errors?.['minlength']">
                         Position must be at least 5 characters long.
                     </p>
                 </ng-container>
@@ -21,14 +21,14 @@
 
             <div class="new-theme-age">
                 <label for="age">Age <span class="red">*</span></label>
-                <textarea type="text" name="age" id="age" class="height" ngModel #inputName="ngModel" required
+                <textarea type="text" name="age" id="age" class="height" ngModel #inputAge="ngModel" required
                     minlength="2"></textarea>
 
-                <ng-container *ngIf="inputName.touched">
-                    <p class="error" *ngIf="inputName.errors?.['required']">
+                <ng-container *ngIf="inputAge.touched">
+                    <p class="error" *ngIf="inputAge.errors?.['required']">
                         Age is required.
                     </p>
-                    <p class="error" *ngIf="inputName.errors?.['minlength']">
+                    <p class="error" *ngIf="inputAge.errors?.['minlength']">
                         Age must be at least 2 characters long.
                     </p>
                 </ng-container>
@@ -36,14 +36,14 @@
 
             <div class="new-theme-company">
                 <label for="company">Company <span class="red">*</span></label>
-                <textarea type="text" name="company" id="company" class="height" ngModel #inputName="ngModel"
+                <textarea type="text" name="company" id="company" class="height" ngModel #inputCompany="ngModel"
                     required minlength="6"></textarea>
 
-                <ng-container *ngIf="inputName.touched">
-                    <p class="error" *ngIf="inputName.errors?.['required']">
+                <ng-container *ngIf="inputCompany.touched">
+                    <p class="error" *ngIf="inputCompany.errors?.['required']">
                         JobCompany is required.
                     </p>
-                    <p class="error" *ngIf="inputName.errors?.['minlength']">
+                    <p class="error" *ngIf="inputCompany.errors?.['minlength']">
                         jobCompany must be at least 6 characters long.
                     </p>
                 </ng-container>
@@ -51,11 +51,11 @@
 
             <div class="new-theme-image">
                 <label for="imageUrl">Image <span class="red">*</span></label>
-                <textarea type="text" name="imageUrl" id="imageUrl" class="height" ngModel #inputName="ngModel"
+                <textarea type="text" name="imageUrl" id="imageUrl" class="height" ngModel #inputImage="ngModel"
                     required></textarea>
 
-                <ng-container *ngIf="inputName.touched">
-                    <p class="error" *ngIf="inputName.errors?.['required']">
+                <ng-container *ngIf="inputImage.touched">
+                    <p class="error" *ngIf="inputImage.errors?.['required']">
                         JobImage is required.
                     </p>
                 </ng-container>
@@ -63,11 +63,11 @@
 
             <div class="new-theme-vesselType">
                 <label for="vesselType">Vessel Type <span class="red">*</span></label>
-                <textarea type="text" name="vesselType" id="vesselType" class="height" ngModel #inputName="ngModel"
+                <textarea type="text" name="vesselType" id="vesselType" class="height" ngModel #inputType="ngModel"
                     required minlength="6"></textarea>
 
-                <ng-container *ngIf="inputName.touched">
-                    <p class="error" *ngIf="inputName.errors?.['required']">
+                <ng-container *ngIf="inputType.touched">
+                    <p class="error" *ngIf="inputType.errors?.['required']">
                         VesselType is required.
                     </p>
                 </ng-container>
@@ -75,14 +75,14 @@
 
             <div class="new-theme-telephone">
                 <label for="tel">Telephone <span class="red">*</span></label>
-                <textarea type="text" name="tel" id="tel" class="height" ngModel #inputName="ngModel" required
+                <textarea type="text" name="tel" id="tel" class="height" ngModel #inputTelephone="ngModel" required
                     minlength="6"></textarea>
 
-                <ng-container *ngIf="inputName.touched">
-                    <p class="error" *ngIf="inputName.errors?.['required']">
+                <ng-container *ngIf="inputTelephone.touched">
+                    <p class="error" *ngIf="inputTelephone.errors?.['required']">
                         Telephone is required.
                     </p>
-                    <p class="error" *ngIf="inputName.errors?.['minlength']">
+                    <p class="error" *ngIf="inputTelephone.errors?.['minlength']">
                         Telephone must be at least 6 characters long.
                     </p>
                 </ng-container>

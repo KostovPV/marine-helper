@@ -6,7 +6,11 @@ import { NgForm } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Jobs } from 'src/app/models/jobs.model';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { tap } from 'rxjs/operators';
 
+
+@UntilDestroy()
 
 @Component({
   selector: 'app-edit-job',
@@ -64,7 +68,7 @@ export class EditJobComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private jobService: JobsStorageService,
-    private userServise: UsersService,
+    private userservice: UsersService,
     private router: Router,
     private fb: FormBuilder
   ) { }
@@ -72,6 +76,17 @@ export class EditJobComponent implements OnInit {
 
 
   ngOnInit(): void {
+    let author: any;
+    let canEdit = true;
+    this.userservice.currentUserProfile$
+    .pipe(untilDestroyed(this), tap(console.log))
+    .subscribe((user)=>{
+      // this.userId = user.uid;
+     
+      this.userId = user.uid
+      console.log('this.userId', this.userId);
+      
+    })
     // console.log('jobForm', this.jobForm);
     this.activatedRoute.url.subscribe(sa => sa.forEach(value => this.url += `/${value}`));
     // this.activatedRoute.params.subscribe(p => this.id = p['id'])
@@ -84,7 +99,13 @@ export class EditJobComponent implements OnInit {
     )
     this.jobService.getJob(this.jobId).subscribe(job=>{
       this.job = job
-      console.log(this.job);
+      
+      console.log('author', this.author);
+      if(this.job.author != this.jobId ){
+        canEdit=false;
+      }
+      console.log(('canEdit'), canEdit);
+      
       
     });
     
@@ -121,18 +142,20 @@ export class EditJobComponent implements OnInit {
   editComponentSubmitHandler(job: Jobs) {
     // console.log('jobForm.value' ,this.jobForm.value);
     console.log(job);
-    
+    let userId:string;
     // if (jobForm.invalid) {
     //   return;
     // }
-
+    userId= this.userId;
+    console.log("userId", userId);
+    
   //  const { company, age, position, imageUrl, vesselType, tel } = this.jobForm.value;
   //  console.log('company',company, age, position, imageUrl, vesselType, tel);
   //  this.jobService.createJob(age, company, position, imageUrl, vesselType, tel).subscribe(() => {
   //   this.router.navigate(['/jobs/list/'+this.jobId]);
   // }
   
-  this.jobService.editJob(this.jobId, job).subscribe(() => {
+  this.jobService.editJob(this.jobId, userId,  job).subscribe(() => {
     this.router.navigate(['/jobs/list/']);
   })
    

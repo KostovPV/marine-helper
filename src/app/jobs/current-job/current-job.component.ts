@@ -17,9 +17,10 @@ export class CurrentJobComponent implements OnInit {
   id: any;
   url: string = '';
   job: any;
-  canEdit: boolean = true;
+  canEdit:boolean = false;
+  
   userId: any;
-  author: any;
+
 
   constructor(private activatedRoute: ActivatedRoute,
     private jobService: JobsStorageService,
@@ -38,8 +39,7 @@ export class CurrentJobComponent implements OnInit {
     this.jobService .getJob(this.id).subscribe(job => {
       this.job = job;
       console.log(job);
-      this.author= this.job.creator;
-      console.log( 'author', this.author);
+     
 
     });
 
@@ -49,8 +49,10 @@ export class CurrentJobComponent implements OnInit {
     .subscribe((user)=>{
       this.userId = user?.uid;
       console.log('this.userId',this.userId);
-      if(this.userId !== this.author){
-        this.canEdit = false;
+      console.log('this.job.author', this.job.author);
+      
+      if(this.userId == this.job.author){
+        this.canEdit = true;
         console.log('canEdit', this.canEdit);
         
       }

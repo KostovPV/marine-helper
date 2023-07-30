@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { switchMap, tap } from 'rxjs';
@@ -29,7 +30,8 @@ export class ProfileComponent implements OnInit {
     private imageUploadService: ImageUploadService,
     private toast: HotToastService,
     private usersService: UsersService,
-    private fb: NonNullableFormBuilder
+    private fb: NonNullableFormBuilder,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -75,6 +77,7 @@ export class ProfileComponent implements OnInit {
           error: 'There was an error in updating the profile',
         })
       )
-      .subscribe();
+      .subscribe()
+      this.router.navigate(['/home'])
   }
 }
