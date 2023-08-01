@@ -1,15 +1,17 @@
 <p>edit-job works!</p>
 
+
+
 <div class="container">
-  <div class="new-theme-border">
-      <div class="header-background">
-          <span>New Job</span>
-      </div>
-      <form #jobForm="ngForm" (ngSubmit)="editComponentSubmitHandler(jobForm.value)">
-          <div class="new-theme-position">
-              <label for="position">Position <span class="red">*</span></label>
-              <input type="text" name="position" id="position" [(ngModel)]="job.position"   />
-<!-- 
+    <div class="new-theme-border">
+        <div class="header-background">
+            <span>New Job</span>
+        </div>
+        <form #jobForm="ngForm" (ngSubmit)="editComponentSubmitHandler(jobForm.value)">
+            <div class="new-job-position">
+                <label for="position">Position <span class="red">*</span></label>
+                <input type="text" name="position" id="position" [(ngModel)]="job.position" />
+                <!-- 
               <ng-container *ngIf="inputName.touched">
                   <p class="error" *ngIf="inputName.errors?.['required']">
                       Position is required.
@@ -18,14 +20,13 @@
                       Position must be at least 5 characters long.
                   </p>
               </ng-container> -->
-          </div>
+            </div>
 
-          <div class="new-theme-age">
-              <label for="age">Age <span class="red">*</span></label>
-              <textarea type="text" name="age" class="height"  id="Age" [(ngModel)]="job.age"  
-                  ></textarea>
+            <div class="new-job-age">
+                <label for="age">Age <span class="red">*</span></label>
+                <textarea type="text" name="age" class="height" id="Age" [(ngModel)]="job.age"></textarea>
 
-              <!-- <ng-container *ngIf="inputName.touched">
+                <!-- <ng-container *ngIf="inputName.touched">
                   <p class="error" *ngIf="inputName.errors?.['required']">
                       Age is required.
                   </p>
@@ -33,14 +34,13 @@
                       Age must be at least 2 characters long.
                   </p>
               </ng-container> -->
-          </div> 
+            </div>
 
-          <div class="new-theme-company">
-              <label for="company">Company <span class="red">*</span></label>
-              <textarea type="text" name="company"  class="height"  id="company" [(ngModel)]="job.company"
-                  ></textarea>
+            <div class="new-job-company">
+                <label for="company">Company <span class="red">*</span></label>
+                <textarea type="text" name="company" class="height" id="company" [(ngModel)]="job.company"></textarea>
 
-              <!-- <ng-container *ngIf="inputName.touched">
+                <!-- <ng-container *ngIf="inputName.touched">
                   <p class="error" *ngIf="inputName.errors?.['required']">
                       JobCompany is required.
                   </p>
@@ -48,37 +48,37 @@
                       jobCompany must be at least 6 characters long.
                   </p>
               </ng-container> -->
-          </div>
+            </div>
 
-          <div class="new-theme-image">
-              <label for="imageUrl">Image <span class="red">*</span></label>
-              <textarea type="text" name="imageUrl"  class="height"  id="imageUrl" [(ngModel)]="job.imageUrl" 
-                 ></textarea>
-<!-- 
+            <div class="new-job-image">
+                <label for="imageUrl">Image <span class="red">*</span></label>
+                <textarea type="text" name="imageUrl" class="height" id="imageUrl"
+                    [(ngModel)]="job.imageUrl"></textarea>
+                <!-- 
               <ng-container *ngIf="inputName.touched">
                   <p class="error" *ngIf="inputName.errors?.['required']">
                       JobImage is required.
                   </p>
               </ng-container> -->
-          </div>
+            </div>
 
-          <div class="new-theme-vesselType">
-              <label for="vesselType">Vessel Type <span class="red">*</span></label>
-              <textarea type="text" name="vesselType"  class="height"  id="vesselType" [(ngModel)]="job.vesselType"
-                ></textarea>
+            <div class="new-job-vesselType">
+                <label for="vesselType">Vessel Type <span class="red">*</span></label>
+                <textarea type="text" name="vesselType" class="height" id="vesselType"
+                    [(ngModel)]="job.vesselType"></textarea>
 
-              <!-- <ng-container *ngIf="inputName.touched">
+                <!-- <ng-container *ngIf="inputName.touched">
                   <p class="error" *ngIf="inputName.errors?.['required']">
                       VesselType is required.
                   </p>
               </ng-container> -->
-          </div>
+            </div>
 
-          <div class="new-theme-telephone">
-              <label for="tel">Telephone <span class="red">*</span></label>
-              <textarea type="text" name="tel"  class="height"  id="tel" [(ngModel)]="job.tel" ></textarea>
+            <div class="new-job-telephone">
+                <label for="tel">Telephone <span class="red">*</span></label>
+                <textarea type="text" name="tel" class="height" id="tel" [(ngModel)]="job.tel"></textarea>
 
-              <!-- <ng-container *ngIf="inputName.touched">
+                <!-- <ng-container *ngIf="inputName.touched">
                   <p class="error" *ngIf="inputName.errors?.['required']">
                       Telephone is required.
                   </p>
@@ -86,60 +86,19 @@
                       Telephone must be at least 6 characters long.
                   </p>
               </ng-container> -->
-          </div>
+            </div>
 
-          <div class="new-theme-buttons">
+            <div class="new-job-buttons">
+                <div class="submit">
+                    <button type="submit" class="public">Save</button>
+                </div>
+                <div class="delete">
+                    <button (click)="onDeleteHandler(job.id)" class="public">Delete</button>
 
-              <button  type="submit" class="public">Save</button>
-          </div>
-      </form>
-  </div>
-</div>
+                </div>
 
-<!-- <div> 
-
-   <br>
-  job url is
-</div>
-<div class="job-details-wrapper">
-  <form [formGroup]="jobForm" (ngSubmit)="editComponentSubmitHandler(jobForm.value)">
-    <div *ngIf="errorMessage" class="alert alert-danger">
-        {{errorMessage}}
+            </div>
+        </form>
     </div>
-      <div class="my-2">
-          <label for="position">Position</label>
-          <input type="text" value="{{job?.position}}" 
-          id="position" formControlName="position" 
-            class="form-control">
-      </div> 
-      <div class="my-2">
-          <label for="age">Age</label>
-          <input type="text" value="{{job?.age}}"
-          formControlName="age" id="age" class="form-control">
-      </div>
-      <div class="my-2">
-          <label for="company">Company</label>
-          <input type="text" value="{{job?.company}}"
-           formControlName="company" id="company" class="form-control">
-      </div>
-      <div class="my-2">
-          <label for="imageUrl">ImageUrl</label>
-          <input type="text" value="{{job?.imageUrl}}"
-          formControlName="imageUrl" id="imageUrl" class="form-control">
-      </div>
-      <div class="my-2">
-          <label for="vesselType">vesselType</label>
-          <input type="text" value="{{job?.vesselType}}"
-          formControlName="vesselType" id="vesselType" class="form-control">
-      </div>
-      <div class="my-2">
-          <label for="tel">Telephone</label>
-          <input type="text" value="{{job?.tel}}"
-          formControlName="tel" id="tel" class="form-control">
-      </div>
-  
-      <div  class="my-2">
-          <button class="btn btn-warning">Save </button>
-      </div>
-  </form>
-</div> -->
+</div>
+

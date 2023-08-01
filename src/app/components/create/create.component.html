@@ -1,10 +1,10 @@
 <div class="container">
-    <div class="new-theme-border">
+    <div class="new-job-border">
         <div class="header-background">
             <span>New Job</span>
         </div>
         <form #form="ngForm" (ngSubmit)="createJobHandler(form)">
-            <div class="new-theme-position">
+            <div class="new-job-position">
                 <label for="position">Position <span class="red">*</span></label>
                 <input type="text" name="position" id="position" ngModel #inputPosition="ngModel" required
                     minlength="5" />
@@ -19,7 +19,7 @@
                 </ng-container>
             </div>
 
-            <div class="new-theme-age">
+            <div class="new-job-age">
                 <label for="age">Age <span class="red">*</span></label>
                 <textarea type="text" name="age" id="age" class="height" ngModel #inputAge="ngModel" required
                     minlength="2"></textarea>
@@ -34,7 +34,7 @@
                 </ng-container>
             </div>
 
-            <div class="new-theme-company">
+            <div class="new-job-company">
                 <label for="company">Company <span class="red">*</span></label>
                 <textarea type="text" name="company" id="company" class="height" ngModel #inputCompany="ngModel"
                     required minlength="6"></textarea>
@@ -49,7 +49,7 @@
                 </ng-container>
             </div>
 
-            <div class="new-theme-image">
+            <div class="new-job-image">
                 <label for="imageUrl">Image <span class="red">*</span></label>
                 <textarea type="text" name="imageUrl" id="imageUrl" class="height" ngModel #inputImage="ngModel"
                     required></textarea>
@@ -61,7 +61,7 @@
                 </ng-container>
             </div>
 
-            <div class="new-theme-vesselType">
+            <div class="new-job-vesselType">
                 <label for="vesselType">Vessel Type <span class="red">*</span></label>
                 <textarea type="text" name="vesselType" id="vesselType" class="height" ngModel #inputType="ngModel"
                     required minlength="6"></textarea>
@@ -73,7 +73,7 @@
                 </ng-container>
             </div>
 
-            <div class="new-theme-telephone">
+            <div class="new-job-telephone">
                 <label for="tel">Telephone <span class="red">*</span></label>
                 <textarea type="text" name="tel" id="tel" class="height" ngModel #inputTelephone="ngModel" required
                     minlength="6"></textarea>
@@ -88,7 +88,7 @@
                 </ng-container>
             </div>
 
-            <div class="new-theme-buttons">
+            <div class="new-job-buttons">
                 <button class="cancel">Cancel</button>
                 <button class="public" [disabled]="form.invalid">Post</button>
             </div>

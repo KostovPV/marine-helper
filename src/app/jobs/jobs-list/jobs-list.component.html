@@ -1,4 +1,4 @@
-<div *ngFor="let job of jobsList" class="theme-container">
+<!-- <div *ngFor="let job of jobsList" class="theme-container">
   <div class="job-name-wrapper">
     <div class="job-name">
       <a class="normal">
@@ -14,22 +14,22 @@
               Age: <span>{{job.age}}</span>
             </p>
           </div>
-          <!-- <div class="Company-info">
+          <div class="Company-info">
             <p>
               Company: <span>{{job.company}}</span>
             </p>
-          </div> -->
+          </div>
           <div class="image-info">
             <p>
               Image:
             </p>
             <img src="{{job.imageUrl}}" alt="Image" width="200" height="200">
           </div>
-          <!-- <div class="tel-info">
+          <div class="tel-info">
             <p>
               Tel: <span>{{job.tel}}</span>
             </p>
-          </div> -->
+          </div>
         </div>
         <div class="vesselType-info">
           <p>
@@ -39,10 +39,35 @@
       </div>
       <div class="subscribers">
         <button class="subscribe" routerLink="{{job.id}}">Details</button>
-        <!-- <p>
+        <p>
           Subscribers: <span></span>
-        </p> -->
+        </p>
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+<div class="wrapper">
+  <div class="content">
+    <h2>jobs-list</h2>
+    <div class="jobs-container">
+      <div *ngFor="let job of jobsList" class="job-card">
+        <img src="{{job.imageUrl}}" alt="Book 1">
+        <div class="job-info">
+          <h3 class="job-position"> {{job.position}}</h3>
+          <!-- <p class="job-author">{{job.author}}</p> -->
+          <!-- <p class="job-description">{{book.description.slice(0, 150)}}...</p> -->
+          <p class="job-vesselType">{{job.vesselType}}</p>
+          <div class="subsciption">
+
+            <!-- <span class="jobs-subscribtions">{{job.subscriber.length}}</span> -->
+            <div class="button-group">
+              <a [routerLink]="job.id" class="normal">
+                <button type="button" class="button">Details</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

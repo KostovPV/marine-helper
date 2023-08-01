@@ -80,11 +80,12 @@ export class JobsStorageService {
     return this.http.put<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs/${id}.json`, body)
   }
 
+  deleteJobById(jobId: string) {
+    const apiUrl = 'https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app';
+
+    return this.http.delete<Jobs[]>(`${apiUrl}/jobs/${jobId}.json`);
+  }
+
 }
-  // getJobById(id) {
-  //   const  apiUrl  = 'https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app';
-  //   let job = null
-  //   return this.http.get<Jobs>(`${apiUrl}/jobs.json`).pipe(map(job=>{
-  //    job.id == id
-  //   }));
+ 
 

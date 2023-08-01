@@ -62,7 +62,7 @@ export class EditJobComponent implements OnInit {
   //   tel: ['', [
   //     Validators.required,
   //     Validators.minLength(8),
-     
+
   //   ]]
   // });
 
@@ -79,14 +79,14 @@ export class EditJobComponent implements OnInit {
     let author: any;
     let canEdit = true;
     this.userservice.currentUserProfile$
-    .pipe(untilDestroyed(this), tap(console.log))
-    .subscribe((user)=>{
-      // this.userId = user.uid;
-     
-      this.userId = user.uid
-      console.log('this.userId', this.userId);
-      
-    })
+      .pipe(untilDestroyed(this), tap(console.log))
+      .subscribe((user) => {
+        // this.userId = user.uid;
+
+        this.userId = user.uid
+        console.log('this.userId', this.userId);
+
+      })
     // console.log('jobForm', this.jobForm);
     this.activatedRoute.url.subscribe(sa => sa.forEach(value => this.url += `/${value}`));
     // this.activatedRoute.params.subscribe(p => this.id = p['id'])
@@ -97,18 +97,18 @@ export class EditJobComponent implements OnInit {
       sa.forEach(value => this.url += `/${value}`)
     }
     )
-    this.jobService.getJob(this.jobId).subscribe(job=>{
+    this.jobService.getJob(this.jobId).subscribe(job => {
       this.job = job
-      
+
       console.log('author', this.author);
-      if(this.job.author != this.jobId ){
-        canEdit=false;
+      if (this.job.author != this.jobId) {
+        canEdit = false;
       }
       console.log(('canEdit'), canEdit);
-      
-      
+
+
     });
-    
+
 
 
   }
@@ -124,7 +124,7 @@ export class EditJobComponent implements OnInit {
   //   const data: Jobs = this.jobForm.value;
   //   this.errorMessage = '';
   //   console.log(data);
-    
+
   //   this.jobService.editJob(this.jobId, data).subscribe({
   //     error: (err) => {
   //       if (err.error.errors) {
@@ -142,30 +142,29 @@ export class EditJobComponent implements OnInit {
   editComponentSubmitHandler(job: Jobs) {
     // console.log('jobForm.value' ,this.jobForm.value);
     console.log(job);
-    let userId:string;
+    let userId: string;
     // if (jobForm.invalid) {
     //   return;
     // }
-    userId= this.userId;
+    userId = this.userId;
     console.log("userId", userId);
-    
-  //  const { company, age, position, imageUrl, vesselType, tel } = this.jobForm.value;
-  //  console.log('company',company, age, position, imageUrl, vesselType, tel);
-  //  this.jobService.createJob(age, company, position, imageUrl, vesselType, tel).subscribe(() => {
-  //   this.router.navigate(['/jobs/list/'+this.jobId]);
-  // }
-  
-  this.jobService.editJob(this.jobId, userId,  job).subscribe(() => {
-    this.router.navigate(['/jobs/list/']);
-  })
-   
 
+    //  const { company, age, position, imageUrl, vesselType, tel } = this.jobForm.value;
+    //  console.log('company',company, age, position, imageUrl, vesselType, tel);
+    //  this.jobService.createJob(age, company, position, imageUrl, vesselType, tel).subscribe(() => {
+    //   this.router.navigate(['/jobs/list/'+this.jobId]);
+    // }
+    this.jobService.editJob(this.jobId, userId, job).subscribe(() => {
+      this.router.navigate(['/jobs/list/']);
+    })
 
+  }
 
-  
-
-}
-
+  onDeleteHandler(id:string){
+    this.jobService.deleteJobById(id).subscribe(() => {
+        this.router.navigate(['jobs/list'])
+      })
+  }
 
 
 
