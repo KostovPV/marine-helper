@@ -47,15 +47,15 @@ export class JobsStorageService {
 
 
 
-  createjob(company: string, age: string, position: string,
-    imageUrl: string, vesselType: string, tel: string) {
-    const PROJECT_ID = 'rate-me-a5440'
-    const apiUrl = `https://${PROJECT_ID}.firebaseio.com/message_list.json`;
-    this.http.post<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs.json`, { company, age, position, imageUrl, vesselType, tel }).subscribe(responsdata => {
-      console.log(responsdata);
+  // createjob(company: string, age: string, position: string,
+  //   imageUrl: string, vesselType: string, tel: string, author: string) {
+  //   const PROJECT_ID = 'rate-me-a5440'
+  //   const apiUrl = `https://${PROJECT_ID}.firebaseio.com/message_list.json`;
+  //   this.http.post<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs.json`, { company, age, position, imageUrl, vesselType, tel, author }).subscribe(responsdata => {
+  //     console.log(responsdata);
 
-    });
-  }
+  //   });
+  // }
 
   // company: string, age: string, position: string,
   // imageUrl: string, vesselType: string, tel: string
@@ -80,10 +80,10 @@ export class JobsStorageService {
     return this.http.put<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs/${id}.json`, body)
   }
 
-  deleteJobById(jobId: string) {
-    const apiUrl = 'https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app';
+  deleteJobById(id: string) {
+    // const apiUrl = 'https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app';
 
-    return this.http.delete<Jobs[]>(`${apiUrl}/jobs/${jobId}.json`);
+    // return this.http.delete<Jobs[]>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs/${id}.json`);
   }
 
 }

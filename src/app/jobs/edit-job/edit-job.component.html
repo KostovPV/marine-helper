@@ -10,7 +10,7 @@
         <form #jobForm="ngForm" (ngSubmit)="editComponentSubmitHandler(jobForm.value)">
             <div class="new-job-position">
                 <label for="position">Position <span class="red">*</span></label>
-                <input type="text" name="position" id="position" [(ngModel)]="job.position" />
+                <textarea type="text" name="position" class="height" id="position" [(ngModel)]="job.position"></textarea>
                 <!-- 
               <ng-container *ngIf="inputName.touched">
                   <p class="error" *ngIf="inputName.errors?.['required']">

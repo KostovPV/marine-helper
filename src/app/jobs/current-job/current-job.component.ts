@@ -28,6 +28,7 @@ export class CurrentJobComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
+    let author: string;
     this.activatedRoute.url.subscribe(sa => sa.forEach(value => this.url += `/${value}`));
     // this.activatedRoute.params.subscribe(p => this.id = p['id'])
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -38,6 +39,9 @@ export class CurrentJobComponent implements OnInit {
 
     this.jobService .getJob(this.id).subscribe(job => {
       this.job = job;
+      author = this.job.author;
+      console.log('author', author);
+
       console.log(job);
      
 
@@ -49,7 +53,6 @@ export class CurrentJobComponent implements OnInit {
     .subscribe((user)=>{
       this.userId = user?.uid;
       console.log('this.userId',this.userId);
-      console.log('this.job.author', this.job.author);
       
       if(this.userId == this.job.author){
         this.canEdit = true;
@@ -66,5 +69,3 @@ export class CurrentJobComponent implements OnInit {
 
 
 }
-
-

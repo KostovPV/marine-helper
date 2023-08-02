@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Jobs } from 'src/app/models/jobs.model';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 
 @UntilDestroy()
@@ -18,14 +19,11 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./edit-job.component.css']
 })
 export class EditJobComponent implements OnInit {
-  jobId: any;
+  id: any;
   url: string = '';
   job: any;
-  canEdit: boolean = true;
+  canEdit:boolean = false;
   userId: any;
-  author: any;
-  errorMessage: string = '';
-
   // jobForm: FormGroup = this.fb.group({
   //   position: ['', [
   //     Validators.required,
@@ -70,102 +68,77 @@ export class EditJobComponent implements OnInit {
     private jobService: JobsStorageService,
     private userservice: UsersService,
     private router: Router,
-    private fb: FormBuilder
+    private http: HttpClient
   ) { }
 
 
 
   ngOnInit(): void {
-    let author: any;
-    let canEdit = true;
-    this.userservice.currentUserProfile$
-      .pipe(untilDestroyed(this), tap(console.log))
-      .subscribe((user) => {
-        // this.userId = user.uid;
-
-        this.userId = user.uid
-        console.log('this.userId', this.userId);
-
-      })
-    // console.log('jobForm', this.jobForm);
+    let author: string;
     this.activatedRoute.url.subscribe(sa => sa.forEach(value => this.url += `/${value}`));
     // this.activatedRoute.params.subscribe(p => this.id = p['id'])
-    this.jobId = this.activatedRoute.snapshot.params['id'];
-    console.log('this.jobId', this.jobId);
-
-    this.activatedRoute.url.subscribe(sa => {
-      sa.forEach(value => this.url += `/${value}`)
+    this.id = this.activatedRoute.snapshot.params['id'];
+    this.activatedRoute.url.subscribe(sa=>{
+      sa.forEach(value=> this.url+=`/${value}`)
     }
-    )
-    this.jobService.getJob(this.jobId).subscribe(job => {
-      this.job = job
+      )
 
-      console.log('author', this.author);
-      if (this.job.author != this.jobId) {
-        canEdit = false;
-      }
-      console.log(('canEdit'), canEdit);
+    this.jobService .getJob(this.id).subscribe(job => {
+      this.job = job;
+      author = this.job?.author;
+      console.log('author', author);
 
+      console.log(job);
+     
 
     });
 
-
-
+    this.userservice.currentUserProfile$
+    .pipe(untilDestroyed(this))
+    // .pipe(untilDestroyed(this), tap(console.log))
+    .subscribe((user)=>{
+      this.userId = user?.uid;
+      console.log('this.userId',this.userId);
+      
+      if(this.userId == this.job.author){
+        this.canEdit = true;
+        console.log('canEdit', this.canEdit);
+        
+      }
+      
+    })
+   
   }
-
-  // edit(event: Event) {
-  //   event.preventDefault();
-
-  //   if (this.jobForm.invalid) {
-  //     this.errorMessage = 'The form you have submitted is invalid';
-  //     return;
-  //   }
-
-  //   const data: Jobs = this.jobForm.value;
-  //   this.errorMessage = '';
-  //   console.log(data);
-
-  //   this.jobService.editJob(this.jobId, data).subscribe({
-  //     error: (err) => {
-  //       if (err.error.errors) {
-  //         this.errorMessage = err.error.errors[0].msg;
-  //       } else {
-  //         this.errorMessage = err.message;
-  //       }
-  //     },
-  //     complete: () => {
-  //       this.router.navigate([`/jobs/list/${this.jobId}`]);
-  //     }
-  //   });
-  // }
-
-  editComponentSubmitHandler(job: Jobs) {
+  editComponentSubmitHandler( job: Jobs) {
     // console.log('jobForm.value' ,this.jobForm.value);
-    console.log(job);
-    let userId: string;
+    console.log(this.job);
+
     // if (jobForm.invalid) {
     //   return;
     // }
-    userId = this.userId;
-    console.log("userId", userId);
 
-    //  const { company, age, position, imageUrl, vesselType, tel } = this.jobForm.value;
-    //  console.log('company',company, age, position, imageUrl, vesselType, tel);
-    //  this.jobService.createJob(age, company, position, imageUrl, vesselType, tel).subscribe(() => {
-    //   this.router.navigate(['/jobs/list/'+this.jobId]);
-    // }
-    this.jobService.editJob(this.jobId, userId, job).subscribe(() => {
+    console.log("userId", this.userId);
+    this.jobService.editJob(this.id, this.userId, job).subscribe(() => {
       this.router.navigate(['/jobs/list/']);
     })
 
   }
 
-  onDeleteHandler(id:string){
-    this.jobService.deleteJobById(id).subscribe(() => {
-        this.router.navigate(['jobs/list'])
-      })
+  onDeleteHandler(id:string) {
+    // console.log('id',id);
+    
+  //  this.jobService.deleteJobById(id).subscribe(() => {
+  //     this.router.navigate(['/jobs/list'])
+  //   })
+  this.http.delete<Jobs[]>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs/${id}.json`).subscribe();
+  
+  }
   }
 
+ 
+
+  
 
 
-}
+
+
