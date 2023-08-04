@@ -17,8 +17,8 @@ export class CurrentJobComponent implements OnInit {
   id: any;
   url: string = '';
   job: any;
-  canEdit:boolean = false;
-  
+  canEdit: boolean = false;
+
   userId: any;
 
 
@@ -26,43 +26,36 @@ export class CurrentJobComponent implements OnInit {
     private jobService: JobsStorageService,
     private userServise: UsersService
   ) { }
-  
+
   ngOnInit(): void {
     let author: string;
     this.activatedRoute.url.subscribe(sa => sa.forEach(value => this.url += `/${value}`));
     // this.activatedRoute.params.subscribe(p => this.id = p['id'])
     this.id = this.activatedRoute.snapshot.params['id'];
-    this.activatedRoute.url.subscribe(sa=>{
-      sa.forEach(value=> this.url+=`/${value}`)
+    this.activatedRoute.url.subscribe(sa => {
+      sa.forEach(value => this.url += `/${value}`)
     }
-      )
+    )
 
-    this.jobService .getJob(this.id).subscribe(job => {
+    this.jobService.getJob(this.id).subscribe(job => {
       this.job = job;
       author = this.job.author;
-      console.log('author', author);
-
-      console.log(job);
-     
-
+      console.log('author', this.job.author);
+      console.log('job', this.job);
+      // console.log('job.subscribers',job.subscribers);
     });
 
     this.userServise.currentUserProfile$
-    .pipe(untilDestroyed(this))
-    // .pipe(untilDestroyed(this), tap(console.log))
-    .subscribe((user)=>{
-      this.userId = user?.uid;
-      console.log('this.userId',this.userId);
-      
-      if(this.userId == this.job.author){
-        this.canEdit = true;
-        console.log('canEdit', this.canEdit);
-        
-      }
-      
-    })
-   
+      .pipe(untilDestroyed(this))
+      .subscribe((user) => {
+        this.userId = user?.uid;
+        console.log('this.userId', this.userId);
 
+        if (this.userId == this.job.author) {
+          this.canEdit = true;
+          console.log('canEdit', this.canEdit);
+        }
+      })
   }
 
 

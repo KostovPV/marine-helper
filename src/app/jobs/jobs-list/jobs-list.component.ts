@@ -14,20 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { UsersService } from 'src/app/services/users.service';
 
-// import{getFirestore, getDoc , doc, collection} from "firebase/firestore"
-// const db = getFirestore();
-// const docRef = doc(db, "jobs", "-NaGkqB6wQ8vPgYB9ySC");
-// const docSnap = getDoc(docRef);
-//  console.log(docSnap.data().subscribe());
 
-
-// const db = getFirestore();
-// db.collection("jobs")
-// .doc("cAwTiq7IYKAbFGnhgKT3")
-// .get()
-// .then(doc => {
-//     console.log(doc.data()) 
-// })
 @UntilDestroy()
 @Component({
   selector: 'app-jobs-list',
@@ -60,13 +47,7 @@ export class JobsListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    
-    // this.userSub = this.authServise.currentUser$.subscribe(user => {
-    //   this.id = user?.uid
-    //   console.log(user);
-    //   console.log('id', this.id);
-    // });
-
+  
     this.userservice.currentUserProfile$
     .pipe(untilDestroyed(this), tap(console.log))
     .subscribe((user)=>{
@@ -74,9 +55,7 @@ export class JobsListComponent implements OnInit {
       console.log(this.userId);
       
     })
-    // (user) => {
-      // this.profileForm.patchValue({ ...user });
-    // });
+   
    
     this.apiService.getJobs()
       .pipe(map(responseData => {

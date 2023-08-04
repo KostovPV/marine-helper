@@ -39,13 +39,14 @@ ngOnInit(): void {
       return;
     }
    author = this.userId
+   const subscribers: string[] = [];
     const { age, company, position, imageUrl, vesselType, tel} = form.value;
     console.log( form.value);
     console.log('this.userid', );
    
    console.log('author', author);
    
-    this.jobService.createJob(age, company, position, imageUrl, vesselType, tel, author).subscribe(() => {
+    this.jobService.createJob(age, company, position, imageUrl, vesselType, tel, author, subscribers).subscribe(() => {
       this.router.navigate(['/jobs/list']);
     });
   }

@@ -11,8 +11,8 @@ import { ok } from 'assert';
 
 @Injectable({ providedIn: 'root' })
 export class JobsStorageService {
-  user: any;
-  // const job:Jobs{};
+  // user: any;
+  
   constructor(
     private http: HttpClient,
 
@@ -34,37 +34,13 @@ export class JobsStorageService {
   }
 
   createJob(age: string, company: string, position: string,
-    imageUrl: string, vesselType: string, tel: string, author: string) {
+    imageUrl: string, vesselType: string, tel: string, author: string, subscribers: string[]) {
     const apiUrl = 'https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app';
 
 
-    return this.http.post(`${apiUrl}/jobs.json`, { age, company, position, imageUrl, vesselType, tel, author })
+    return this.http.post(`${apiUrl}/jobs.json`, { age, company, position, imageUrl, vesselType, tel, author, subscribers })
 
   }
-
-
-
-
-
-
-  // createjob(company: string, age: string, position: string,
-  //   imageUrl: string, vesselType: string, tel: string, author: string) {
-  //   const PROJECT_ID = 'rate-me-a5440'
-  //   const apiUrl = `https://${PROJECT_ID}.firebaseio.com/message_list.json`;
-  //   this.http.post<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs.json`, { company, age, position, imageUrl, vesselType, tel, author }).subscribe(responsdata => {
-  //     console.log(responsdata);
-
-  //   });
-  // }
-
-  // company: string, age: string, position: string,
-  // imageUrl: string, vesselType: string, tel: string
-
-  // updatejob(id: string, value: Jobs) {
-  //   const PROJECT_ID = 'rate-me-a5440'
-  //   const apiUrl = `https://${PROJECT_ID}.firebaseio.com/message_list.json`;
-  //   this.http.put<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs.json`, value).subscribe()
-  // };
 
   editJob(id: string,author: string, data: Jobs) {
     const body = {
@@ -80,10 +56,12 @@ export class JobsStorageService {
     return this.http.put<Jobs>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs/${id}.json`, body)
   }
 
-  deleteJobById(id: string) {
-    // const apiUrl = 'https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app';
 
-    // return this.http.delete<Jobs[]>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs/${id}.json`);
+
+  deleteJobById(id: string) {
+   
+    const appUrl = 'https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app';
+    return this.http.delete<Jobs>(`${appUrl}/jobs/${id}.json`)
   }
 
 }

@@ -109,6 +109,7 @@ export class EditJobComponent implements OnInit {
     })
    
   }
+  
   editComponentSubmitHandler( job: Jobs) {
     // console.log('jobForm.value' ,this.jobForm.value);
     console.log(this.job);
@@ -124,15 +125,20 @@ export class EditJobComponent implements OnInit {
 
   }
 
-  onDeleteHandler(id:string) {
-    // console.log('id',id);
-    
-  //  this.jobService.deleteJobById(id).subscribe(() => {
-  //     this.router.navigate(['/jobs/list'])
-  //   })
-  this.http.delete<Jobs[]>(`https://rate-me-a5440-default-rtdb.europe-west1.firebasedatabase.app/jobs/${id}.json`).subscribe();
-  
+
+  onDeleteHandler(id: string): void {
+    if (confirm(`Are you sure you want to delete this job ?`)) {
+      this.jobService.deleteJobById(id).subscribe(()=> {
+        console.log('deleting completed');
+        
+        this.router.navigate(['/home'])
+      });
+    } else {
+      return;
+    }
   }
+
+
   }
 
  

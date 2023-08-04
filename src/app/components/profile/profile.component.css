@@ -18,9 +18,11 @@
 
 .form-container {
   max-width: 400px;
-  
-  /* display: flex;
-  align-items: center; */
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .row {
@@ -31,10 +33,26 @@
   max-width: 400px;
   display: flex;
   justify-content: space-between;
-  /* flex-wrap: nowrap; */
+  flex-wrap: nowrap;
   flex-direction: column;
   align-content: space-around;
-  /* position: absolute; */
+  position: absolute;
   margin: 350px;
   align-items: stretch;
+  background-color: rgb(232, 205, 169);
+  
+  
+}
+
+.profile{
+  height: 100%;
+  width: auto;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  background-image: url("https://media.istockphoto.com/id/1030151554/photo/offshore-oil-rig.jpg?s=612x612&w=0&k=20&c=eJOkcSIeFIPmpz6tL1ps_FviDzylZcVUaBt9d3fOXaY=");
+
 }
