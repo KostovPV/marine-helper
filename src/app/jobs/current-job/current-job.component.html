@@ -3,7 +3,9 @@
   <br>
   job url is {{url}}
 </div>
-<div class="job-name-wrapper">
+<div *ngIf="job" class="job-name-wrapper">
+  <div  class="job-filter-wrapper">
+    <!-- *ngIf="filteredSub" -->
   <div class="job-name">
     <a class="normal">
       <h2></h2>
@@ -44,17 +46,25 @@
     </div>
     <div class="subscribers">
       <p>
-        Subscribers: <span></span>
+        Subscribers: <span *ngIf="filteredSub">{{filteredSub?.length}}</span>
       </p>
       <span *ngIf="canEdit">
-        <button class="subscribe" routerLink="edit">Edit </button>
+        <button class="edit" routerLink="edit">Edit </button>
       </span>
       <span *ngIf="!canEdit">
-        <button class="subscribe" routerLink="jobs/list">Subsribe </button>
+        <div *ngIf="canSubscribe">
+          <button class="subscribe" (click)="onSubsriptionHandler(job.id, authorId)" routerLink="/jobs/list">Subsribe </button>
+        </div>
+        <div *ngIf="!canSubscribe">
+          <span class="can't-subscribe" >You have already subscribed </span>
+          <button routerLink="/jobs/list">View other jobs</button>
+        </div>
+        
       </span>
       
 
       
     </div>
   </div>
+</div>
 </div>

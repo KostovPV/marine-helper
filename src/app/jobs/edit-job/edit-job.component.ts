@@ -130,8 +130,10 @@ export class EditJobComponent implements OnInit {
     if (confirm(`Are you sure you want to delete this job ?`)) {
       this.jobService.deleteJobById(id).subscribe(()=> {
         console.log('deleting completed');
+        setTimeout(()=>{
+          this.router.navigate(['/home'])
+        },1000)
         
-        this.router.navigate(['/home'])
       });
     } else {
       return;

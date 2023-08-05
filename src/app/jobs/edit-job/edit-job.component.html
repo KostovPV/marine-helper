@@ -7,7 +7,7 @@
         <div class="header-background">
             <span>New Job</span>
         </div>
-        <form #jobForm="ngForm" (ngSubmit)="editComponentSubmitHandler(jobForm.value)">
+        <form *ngIf="job" #jobForm="ngForm" (ngSubmit)="editComponentSubmitHandler(jobForm.value)">
             <div class="new-job-position">
                 <label for="position">Position <span class="red">*</span></label>
                 <textarea type="text" name="position" class="height" id="position" [(ngModel)]="job.position"></textarea>

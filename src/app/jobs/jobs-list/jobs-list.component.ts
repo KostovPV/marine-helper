@@ -26,20 +26,20 @@ export class JobsListComponent implements OnInit {
   jobsList: Jobs[] = [];
   isLoading: boolean = true;
   userId: any;
- 
+
   job: any;
 
   private userSub?: Subscription;
   profileForm: any;
-  
+
   constructor(
     private apiService: JobsStorageService,
     private userservice: UsersService,
- 
-   
+
+
     // private userService: AuthService
   ) { }
-  
+
 
   // get isLogged(): boolean {
   //   return this.userService.isLogged;
@@ -47,16 +47,16 @@ export class JobsListComponent implements OnInit {
 
 
   ngOnInit(): void {
-  
+
     this.userservice.currentUserProfile$
-    .pipe(untilDestroyed(this), tap(console.log))
-    .subscribe((user)=>{
-      this.userId = user.uid;
-      console.log(this.userId);
-      
-    })
-   
-   
+      .pipe(untilDestroyed(this), tap(console.log))
+      .subscribe((user) => {
+        this.userId = user.uid;
+        console.log(this.userId);
+
+      })
+
+
     this.apiService.getJobs()
       .pipe(map(responseData => {
         const jobsArray = [];
@@ -72,6 +72,6 @@ export class JobsListComponent implements OnInit {
       });
 
   }
-  
-  
+
+
 }
