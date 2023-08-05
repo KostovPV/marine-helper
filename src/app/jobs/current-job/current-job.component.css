@@ -1,0 +1,73 @@
+.job-render-container {
+    background-image: url('https://www.man-es.com/images/default-source/marine-images/istock-868192214_interp_container-stage-neu.jpg?sfvrsn=e1911eba_0');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 22px;
+  }
+  
+  .content-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="number"],
+  .form-group input[type="tel"],
+  .form-group input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-buttons {
+    margin-top: 20px;
+  }
+  
+ 
+  .btn-edit,
+  .btn-subscribe,
+  .btn-view-jobs {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 28px;
+  }
+  
+  .btn-save:hover,
+  .btn-delete:hover,
+  .btn-subscribe:hover,
+  .btn-view-jobs:hover {
+    background-color: #2980b9;
+  }
+  
+  .btn-delete,
+  .btn-subscribe,
+  .btn-view-jobs {
+    display: none;
+  }
+  
+  

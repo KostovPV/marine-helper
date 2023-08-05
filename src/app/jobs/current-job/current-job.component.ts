@@ -24,6 +24,8 @@ export class CurrentJobComponent implements OnInit {
   subscriptions: any;
   filteredSub: any;
   canSubscribe: boolean = false;
+  
+
   constructor(private activatedRoute: ActivatedRoute,
     private jobService: JobsStorageService,
     private userServise: UsersService,
@@ -75,6 +77,7 @@ export class CurrentJobComponent implements OnInit {
         return subsArray
       })).subscribe(subs => {
         this.subscriptions = subs;
+        
         console.log('this.subscriptions', this.subscriptions);
 
         // this.subscriptions.forEach((s: any)=>{s.jobId==this.job.id
