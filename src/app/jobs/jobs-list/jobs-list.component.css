@@ -1,21 +1,34 @@
 .wrapper {
-    background-image: url("/assets/ship.jpg");;
+    background-image: url("/assets/ship.jpg");
   
     /* Full height */
-    height: 100%;
-    width: auto;
+     /* height: 100%; */
+    /* width: auto; */
   
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
+    /* background-image: url('https://www.man-es.com/images/default-source/marine-images/istock-868192214_interp_container-stage-neu.jpg?sfvrsn=e1911eba_0'); */
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    /* display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    color: #fff;
+    font-size: 22px; */
+     
 }
 
 .content {
-    max-width: 800px;
+   
+   width: 100%;
+    height: 100%;
     margin: 0px auto;
-    padding: 40px;
+    padding: 20px;
     /* background-color: #fff; */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex: 1;
@@ -29,6 +42,8 @@ h2 {
 }
 
 .jobs-container {
+      max-width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
@@ -37,6 +52,8 @@ h2 {
 }
 
 .job-card {
+    width: 200px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     background-color: #8fbac3; /* Warm color */

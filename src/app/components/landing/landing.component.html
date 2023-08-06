@@ -1,22 +1,20 @@
-<!-- <h1>
-    Welcome to the Landing Page!
-</h1>
+<div  id="home-intro" class="home-section">
+    <div @fade class="home-intro-auto">
+        <header>
+            <h1>What we offer</h1>
+        </header>
+        <p>Marine help center is a company foccused on helping all envolved parties in marine operations</p>
+        <button mat-raised-button
+       
+         (click)="toggle()"> 
+         {{text}}
+        </button>
+        <div class="additional-info" *ngIf="show">
+            <p>MArine solution senter is the right place to discover a new job. Explore thru multiple job openings to discover the desired job. By regestering in our platform you'll receive a full access to the most resent available positions.</p>
+        </div>
 
-<div>
-    <p>Click Login to login to our system</p>
-    <p>OR</p>
-    <button mat-raised-button color="primary" routerLink="/sign-up">
-        Sign Up!
-    </button>
-</div> -->
-<div id="home-intro" class="home-section">
-    <div class="home-intro-auto">
-        <header class="mb-4"><h1 class="tm-text-shadow">What we offer</h1></header>
-        <p class="mb-5 tm-font-big">Marine help center is a company foccused on helping all envolved parties in marine operations</p>
-        <a href="#" class="btn tm-btn tm-font-big" data-nav-link="#tmNavLink2">Continue...</a> 
-        <!-- data-nav-link holds the ID of nav item, which means this link should behave the same as that nav item  -->
     </div>
-    <div class="intro-nav">
+    <div @fade class="intro-nav">
         <p>Click Login to login to our system</p>
         <p>OR</p>
         <button mat-raised-button color="primary" routerLink="/sign-up">

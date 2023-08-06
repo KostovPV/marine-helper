@@ -31,6 +31,7 @@ import { CreateComponent } from './components/create/create.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { CreateComponent } from './components/create/create.component';
     HomeComponent,
     ProfileComponent,
     CreateComponent,
+
   ],
   imports: [
     CoreModule,
