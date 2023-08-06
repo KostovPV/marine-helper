@@ -1,0 +1,110 @@
+.container {
+    background-image: url('https://www.aims.gov.au/sites/default/files/2022-07/copyrightaims_creditshaunhahn_rvsdaviesreef_2000px_banner.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    color: rgb(32, 28, 28);
+    font-size: 22px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    background-color: #f0f0f0;
+   
+  }
+  .job-age, .job-image, .job-position, .job-vesselType, .job-telephone, .job-image{
+    width: 95%;
+  }
+  .job-details {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    max-width: 600px;
+    opacity: 0.7;
+  }
+  
+  
+  .header-background {
+    background-color: transparent;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .job-details form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .job-details label {
+    font-weight: bold;
+  }
+  
+  .job-details .job-position,
+  .job-details .job-age,
+  .job-details .job-image,
+  .job-details .job-vesselType,
+  .job-details .new-job-telephone {
+    margin-bottom: 20px;
+  }
+  
+  .job-details input,
+  .job-details textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .job-details .new-job-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  
+.submit, .delete{
+    display: inline-block;
+}
+.job-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 8px;
+}
+/* .submit{
+    margin-left: 0, auto;
+}
+
+.delete{
+    margin-right:50px, auto;
+} */
+  .job-details button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .job-details button.public {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .job-details button.public:hover {
+    background-color: #2980b9;
+  }
+  
+  
+  

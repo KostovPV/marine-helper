@@ -3,8 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import { JobsStorageService } from '../jobs.service';
 import { NgForm } from '@angular/forms';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { Jobs } from 'src/app/models/jobs.model';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';

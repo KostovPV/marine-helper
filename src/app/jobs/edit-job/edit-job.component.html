@@ -1,6 +1,6 @@
 
 <div class="container">
-    <div class="new-theme-border">
+    <div class="job-details">
         <div class="header-background">
             <span>Edit current Job</span>
         </div>
@@ -9,7 +9,7 @@
 
             <div class="job-position">
                 <label for="position">Position <span class="red">*</span></label>
-                <input type="text" name="position" id="position" ngModel #inputPosition="ngModel" ngModel="{{job.position}}" required
+                <input class="input" type="text" name="position" id="position" ngModel #inputPosition="ngModel" ngModel="{{job.position}}" required
                     minlength="5" />
 
                 <ng-container *ngIf="inputPosition.touched">
@@ -26,7 +26,7 @@
 
             <div class="job-age">
                 <label for="Age">Age <span class="red">*</span></label>
-                <input type="text" name="age" id="age" ngModel #inputAge="ngModel" ngModel="{{job.age}}" required
+                <input class="input" type="text" name="age" id="age" ngModel #inputAge="ngModel" ngModel="{{job.age}}" required
                     minlength="5" />
 
                 <ng-container *ngIf="inputAge.touched">
@@ -42,7 +42,7 @@
           
             <div class="job-image">
                 <label for="imageUrl">Image <span class="red">*</span></label>
-                <textarea type="text" name="imageUrl" id="imageUrl" class="height" ngModel #inputImage="ngModel" ngModel="{{job.imageUrl}}"
+                <textarea class="input" type="text" name="imageUrl" id="imageUrl" class="height" ngModel #inputImage="ngModel" ngModel="{{job.imageUrl}}"
                     required></textarea>
 
                 <ng-container *ngIf="inputImage.touched">
@@ -54,7 +54,7 @@
 
             <div class="job-vesselType">
                 <label for="vesselType">Vessel Type <span class="red">*</span></label>
-                <textarea type="text" name="vesselType" id="vesselType" class="height" ngModel #inputType="ngModel" ngModel="{{job.vesselType}}"
+                <textarea class="input" type="text" name="vesselType" id="vesselType" class="height" ngModel #inputType="ngModel" ngModel="{{job.vesselType}}"
                     required minlength="6"></textarea>
 
                 <ng-container *ngIf="inputType.touched">
@@ -67,9 +67,9 @@
                 </ng-container>
             </div>
 
-            <div class="new-job-telephone">
+            <div class="job-telephone">
                 <label for="tel">Telephone <span class="red">*</span></label>
-                <textarea type="text" name="tel" id="tel" class="height" ngModel #inputTelephone="ngModel" required ngModel="{{job.tel}}"
+                <textarea class="input" type="text" name="tel" id="tel" class="height" ngModel #inputTelephone="ngModel" required ngModel="{{job.tel}}"
                     minlength="9"></textarea>
 
                 <ng-container *ngIf="inputTelephone.touched">
@@ -82,7 +82,7 @@
                 </ng-container>
             </div>
 
-            <div class="new-job-buttons">
+            <div class="job-buttons">
                 <div class="submit">
                     <button type="submit" class="public">Save</button>
                 </div>
