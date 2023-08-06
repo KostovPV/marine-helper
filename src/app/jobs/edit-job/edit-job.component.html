@@ -1,91 +1,85 @@
-<p>edit-job works!</p>
-
-
 
 <div class="container">
     <div class="new-theme-border">
         <div class="header-background">
-            <span>New Job</span>
+            <span>Edit current Job</span>
         </div>
         <form *ngIf="job" #jobForm="ngForm" (ngSubmit)="editComponentSubmitHandler(jobForm.value)">
-            <div class="new-job-position">
+            
+
+            <div class="job-position">
                 <label for="position">Position <span class="red">*</span></label>
-                <textarea type="text" name="position" class="height" id="position" [(ngModel)]="job.position"></textarea>
-                <!-- 
-              <ng-container *ngIf="inputName.touched">
-                  <p class="error" *ngIf="inputName.errors?.['required']">
-                      Position is required.
-                  </p>
-                  <p class="error" *ngIf="inputName.errors?.['minlength']">
-                      Position must be at least 5 characters long.
-                  </p>
-              </ng-container> -->
+                <input type="text" name="position" id="position" ngModel #inputPosition="ngModel" ngModel="{{job.position}}" required
+                    minlength="5" />
+
+                <ng-container *ngIf="inputPosition.touched">
+                    <p class="error" *ngIf="inputPosition.errors?.['required']">
+                        Position is required.
+                    </p>
+                    <p class="error" *ngIf="inputPosition.errors?.['minlength']">
+                        Position must be at least 5 characters long.
+                    </p>
+                </ng-container>
             </div>
 
-            <div class="new-job-age">
-                <label for="age">Age <span class="red">*</span></label>
-                <textarea type="text" name="age" class="height" id="Age" [(ngModel)]="job.age"></textarea>
+            
 
-                <!-- <ng-container *ngIf="inputName.touched">
-                  <p class="error" *ngIf="inputName.errors?.['required']">
-                      Age is required.
-                  </p>
-                  <p class="error" *ngIf="inputName.errors?.['minlength']">
-                      Age must be at least 2 characters long.
-                  </p>
-              </ng-container> -->
+            <div class="job-age">
+                <label for="Age">Age <span class="red">*</span></label>
+                <input type="text" name="age" id="age" ngModel #inputAge="ngModel" ngModel="{{job.age}}" required
+                    minlength="5" />
+
+                <ng-container *ngIf="inputAge.touched">
+                    <p class="error" *ngIf="inputAge.errors?.['required']">
+                        Age is required.
+                    </p>
+                    <p class="error" *ngIf="inputAge.errors?.['minlength']">
+                        Age must be at least 2 simbols.
+                    </p>
+                </ng-container>
             </div>
 
-            <div class="new-job-company">
-                <label for="company">Company <span class="red">*</span></label>
-                <textarea type="text" name="company" class="height" id="company" [(ngModel)]="job.company"></textarea>
-
-                <!-- <ng-container *ngIf="inputName.touched">
-                  <p class="error" *ngIf="inputName.errors?.['required']">
-                      JobCompany is required.
-                  </p>
-                  <p class="error" *ngIf="inputName.errors?.['minlength']">
-                      jobCompany must be at least 6 characters long.
-                  </p>
-              </ng-container> -->
-            </div>
-
-            <div class="new-job-image">
+          
+            <div class="job-image">
                 <label for="imageUrl">Image <span class="red">*</span></label>
-                <textarea type="text" name="imageUrl" class="height" id="imageUrl"
-                    [(ngModel)]="job.imageUrl"></textarea>
-                <!-- 
-              <ng-container *ngIf="inputName.touched">
-                  <p class="error" *ngIf="inputName.errors?.['required']">
-                      JobImage is required.
-                  </p>
-              </ng-container> -->
+                <textarea type="text" name="imageUrl" id="imageUrl" class="height" ngModel #inputImage="ngModel" ngModel="{{job.imageUrl}}"
+                    required></textarea>
+
+                <ng-container *ngIf="inputImage.touched">
+                    <p class="error" *ngIf="inputImage.errors?.['required']">
+                        JobImage is required.
+                    </p>
+                </ng-container>
             </div>
 
-            <div class="new-job-vesselType">
+            <div class="job-vesselType">
                 <label for="vesselType">Vessel Type <span class="red">*</span></label>
-                <textarea type="text" name="vesselType" class="height" id="vesselType"
-                    [(ngModel)]="job.vesselType"></textarea>
+                <textarea type="text" name="vesselType" id="vesselType" class="height" ngModel #inputType="ngModel" ngModel="{{job.vesselType}}"
+                    required minlength="6"></textarea>
 
-                <!-- <ng-container *ngIf="inputName.touched">
-                  <p class="error" *ngIf="inputName.errors?.['required']">
-                      VesselType is required.
-                  </p>
-              </ng-container> -->
+                <ng-container *ngIf="inputType.touched">
+                    <p class="error" *ngIf="inputType.errors?.['required']">
+                        VesselType is required.
+                    </p>
+                    <p class="error" *ngIf="inputAge.errors?.['minlength']">
+                        VesselType must be at least 6 simbols.
+                    </p>
+                </ng-container>
             </div>
 
             <div class="new-job-telephone">
                 <label for="tel">Telephone <span class="red">*</span></label>
-                <textarea type="text" name="tel" class="height" id="tel" [(ngModel)]="job.tel"></textarea>
+                <textarea type="text" name="tel" id="tel" class="height" ngModel #inputTelephone="ngModel" required ngModel="{{job.tel}}"
+                    minlength="9"></textarea>
 
-                <!-- <ng-container *ngIf="inputName.touched">
-                  <p class="error" *ngIf="inputName.errors?.['required']">
-                      Telephone is required.
-                  </p>
-                  <p class="error" *ngIf="inputName.errors?.['minlength']">
-                      Telephone must be at least 6 characters long.
-                  </p>
-              </ng-container> -->
+                <ng-container *ngIf="inputTelephone.touched">
+                    <p class="error" *ngIf="inputTelephone.errors?.['required']">
+                        Telephone is required.
+                    </p>
+                    <p class="error" *ngIf="inputTelephone.errors?.['minlength']">
+                        Telephone must be at least 9 characters long.
+                    </p>
+                </ng-container>
             </div>
 
             <div class="new-job-buttons">

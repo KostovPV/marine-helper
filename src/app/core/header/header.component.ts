@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 export class HeaderComponent implements OnInit, OnDestroy{
   email: any;
+  image: any;
   isAuthenticated = false;
   private userSub?: Subscription;
 
@@ -22,7 +23,11 @@ export class HeaderComponent implements OnInit, OnDestroy{
   ngOnInit(){
    this.userSub = this.authServise.currentUser$.subscribe(user=>{
     this.isAuthenticated = !user ? false : true;
-    this.email = user?.email
+    console.log(user);
+    
+    this.email = user?.email;
+    this.image = user?.photoURL;
+
     console.log(user);
     
     // console.log(!!user);
