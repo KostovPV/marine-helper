@@ -50,7 +50,7 @@ export class JobsListComponent implements OnInit {
 
     this.userservice.currentUserProfile$
       .pipe(untilDestroyed(this), tap(console.log))
-      .subscribe((user) => {
+      .subscribe((user?) => {
         this.userId = user.uid;
         console.log(this.userId);
 
