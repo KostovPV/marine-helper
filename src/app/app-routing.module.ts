@@ -12,8 +12,8 @@ import {
 import { ProfileComponent } from './components/profile/profile.component';
 import { CreateComponent } from './components/create/create.component';
 
-// const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
-// const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
   {
@@ -24,27 +24,27 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    // ...canActivate(redirectLoggedInToHome),
+    ...canActivate(redirectLoggedInToHome),
   },
   {
     path: 'sign-up',
     component: SignUpComponent,
-    // ...canActivate(redirectLoggedInToHome),
+    ...canActivate(redirectLoggedInToHome),
   },
   {
     path: 'home',
     component: HomeComponent,
-    // ...canActivate(redirectUnauthorizedToLogin),
+    ...canActivate(redirectUnauthorizedToLogin),
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    // ...canActivate(redirectUnauthorizedToLogin),
+    ...canActivate(redirectUnauthorizedToLogin),
   },
   {
     path: 'create',
     component: CreateComponent,
-    // ...canActivate(redirectUnauthorizedToLogin),
+    ...canActivate(redirectUnauthorizedToLogin),
   },
   {
     path: 'jobs',
