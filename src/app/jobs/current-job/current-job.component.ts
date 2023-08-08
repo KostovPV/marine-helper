@@ -86,11 +86,10 @@ export class CurrentJobComponent implements OnInit {
           s.jobId == this.job.id
         )
         this.canSubscribe = false;
-        if ((this.filteredSub.filter((s: { authorId: string, jobId: string, id: string }) =>
+        const filteredJobs = ((this.filteredSub.filter((s: { authorId: string, jobId: string, id: string }) =>
           s.authorId == this.userId
-        )).length == 0){
-          this.canSubscribe = true
-        }
+        )));
+        this.canSubscribe = filteredJobs.length===0? true : false;
           console.log('this.filteredSub', this.filteredSub);
           console.log('canSubscribe', this.canSubscribe);
       });
