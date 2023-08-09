@@ -37,14 +37,14 @@
             <div class="new-job-company">
                 <label for="company">Company <span class="red">*</span></label>
                 <textarea type="text" name="company" id="company" class="height" ngModel #inputCompany="ngModel"
-                    required minlength="6"></textarea>
+                    required minlength="5"></textarea>
 
                 <ng-container *ngIf="inputCompany.touched">
                     <p class="error" *ngIf="inputCompany.errors?.['required']">
-                        JobCompany is required.
+                        Company is required.
                     </p>
                     <p class="error" *ngIf="inputCompany.errors?.['minlength']">
-                        jobCompany must be at least 6 characters long.
+                        Company must be at least 6 characters long.
                     </p>
                 </ng-container>
             </div>
@@ -69,6 +69,9 @@
                 <ng-container *ngIf="inputType.touched">
                     <p class="error" *ngIf="inputType.errors?.['required']">
                         VesselType is required.
+                    </p>
+                    <p class="error" *ngIf="inputType.errors?.['minlength']">
+                        VesselType must be at least 5 characters long.
                     </p>
                 </ng-container>
             </div>

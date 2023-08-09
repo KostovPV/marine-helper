@@ -5,16 +5,14 @@ import { JobsStorageService } from '../jobs.service';
 import { NgForm } from '@angular/forms';
 import { Jobs } from 'src/app/models/jobs.model';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
-
 @UntilDestroy()
-
 @Component({
   selector: 'app-edit-job',
   templateUrl: './edit-job.component.html',
-  styleUrls: ['./edit-job.component.css']
+  styleUrls: ['./edit-job.component.css'],
 })
 export class EditJobComponent implements OnInit {
   id: any;
@@ -23,48 +21,45 @@ export class EditJobComponent implements OnInit {
   canEdit: boolean = false;
   userId: any;
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(
+    private activatedRoute: ActivatedRoute,
     private jobService: JobsStorageService,
     private userservice: UsersService,
     private router: Router,
     private http: HttpClient
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     let author: string;
-    this.activatedRoute.url.subscribe(sa => sa.forEach(value => this.url += `/${value}`));
+    this.activatedRoute.url.subscribe((sa) =>
+      sa.forEach((value) => (this.url += `/${value}`))
+    );
     // this.activatedRoute.params.subscribe(p => this.id = p['id'])
     this.id = this.activatedRoute.snapshot.params['id'];
-    this.activatedRoute.url.subscribe(sa => {
-      sa.forEach(value => this.url += `/${value}`)
-    }
-    )
-
-    this.jobService.getJob(this.id).subscribe(job => {
-      this.job = job;
-      author = this.job?.author;
-      console.log('author', author);
-
-      console.log(job);
-
-
+    this.activatedRoute.url.subscribe((sa) => {
+      sa.forEach((value) => (this.url += `/${value}`));
     });
 
-    this.userservice.currentUserProfile$
-      .pipe(untilDestroyed(this))
-      // .pipe(untilDestroyed(this), tap(console.log))
-      .subscribe((user) => {
-        this.userId = user?.uid;
-        console.log('this.userId', this.userId);
+    // Combined job and user subscriptions so there are no race conditions. Can also be done with combine latest rxjs operator
+    this.jobService
+      .getJob(this.id)
+      .pipe(
+        tap((job) => {
+          this.job = job;
+        }),
+        switchMap((job: any) =>
+          this.userservice.currentUserProfile$.pipe(
+            map((user) => {
+              if (!user) return false;
 
-        if (this.userId == this.job.author) {
-          this.canEdit = true;
-          console.log('canEdit', this.canEdit);
-
-        }
-
-      })
-
+              return user.uid === job.author;
+            })
+          )
+        )
+      )
+      .subscribe((canEdit) => {
+        this.canEdit = canEdit;
+      });
   }
 
   editComponentSubmitHandler(job: Jobs) {
@@ -75,35 +70,22 @@ export class EditJobComponent implements OnInit {
     //   return;
     // }
 
-    console.log("userId", this.userId);
+    console.log('userId', this.userId);
     this.jobService.editJob(this.id, this.userId, job).subscribe(() => {
       this.router.navigate(['/jobs/list/']);
-    })
-
+    });
   }
-
 
   onDeleteHandler(id: string): void {
     if (confirm(`Are you sure you want to delete this job ?`)) {
       this.jobService.deleteJobById(id).subscribe(() => {
         console.log('deleting completed');
         setTimeout(() => {
-          this.router.navigate(['/home'])
-        }, 1000)
-
+          this.router.navigate(['/home']);
+        }, 1000);
       });
     } else {
       return;
     }
   }
-
-
 }
-
-
-
-
-
-
-
-
