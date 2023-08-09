@@ -64,7 +64,7 @@
             <div class="new-job-vesselType">
                 <label for="vesselType">Vessel Type <span class="red">*</span></label>
                 <textarea type="text" name="vesselType" id="vesselType" class="height" ngModel #inputType="ngModel"
-                    required minlength="6"></textarea>
+                    required minlength="5"></textarea>
 
                 <ng-container *ngIf="inputType.touched">
                     <p class="error" *ngIf="inputType.errors?.['required']">
