@@ -34,7 +34,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    ...canActivate(redirectUnauthorizedToLogin),
+    // ...canActivate(redirectUnauthorizedToLogin),
   },
   {
     path: 'profile',
@@ -49,6 +49,7 @@ const routes: Routes = [
   {
     path: 'jobs',
     loadChildren: () => import('./jobs/jobs.module').then((m) => m.JobsModule),
+    ...canActivate(redirectUnauthorizedToLogin),
   },
 ];
 
