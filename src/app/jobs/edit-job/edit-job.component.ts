@@ -20,6 +20,8 @@ export class EditJobComponent implements OnInit {
   job: any;
   canEdit: boolean = false;
   userId: any;
+  isLoading: boolean = true;
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -45,7 +47,10 @@ export class EditJobComponent implements OnInit {
       .getJob(this.id)
       .pipe(
         tap((job) => {
+        // this.isLoading = false;
+
           this.job = job;
+
         }),
         switchMap((job: any) =>
           this.userservice.currentUserProfile$.pipe(
@@ -59,6 +64,7 @@ export class EditJobComponent implements OnInit {
       )
       .subscribe((canEdit) => {
         this.canEdit = canEdit;
+        this.isLoading = false;
       });
   }
 

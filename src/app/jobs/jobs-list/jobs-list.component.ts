@@ -28,7 +28,7 @@ export class JobsListComponent implements OnInit {
   userId: any;
 
   job: any;
-
+  
   private userSub?: Subscription;
   profileForm: any;
 
@@ -67,6 +67,8 @@ export class JobsListComponent implements OnInit {
         }
         return jobsArray
       })).subscribe(jobs => {
+        this.isLoading = false;
+
         this.jobsList = jobs;
         console.log(jobs);
       });

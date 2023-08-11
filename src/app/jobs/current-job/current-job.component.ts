@@ -24,6 +24,7 @@ export class CurrentJobComponent implements OnInit {
   subscriptions: any;
   filteredSub: any;
   canSubscribe: boolean = false;
+  isLoading: boolean = true;
   
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -43,6 +44,8 @@ export class CurrentJobComponent implements OnInit {
     )
 
     this.jobService.getJob(this.id).subscribe(job => {
+      this.isLoading = false;
+
       this.job = job;
       author = this.job.author;
       this.authorId = author;

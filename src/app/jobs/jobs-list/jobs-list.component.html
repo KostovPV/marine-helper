@@ -1,6 +1,9 @@
 <div class="wrapper">
+  
   <div class="content">
-
+    <div *ngIf="isLoading">
+      <app-loader></app-loader>
+    </div>
     <div class="jobs-container">
       <div *ngFor="let job of jobsList" class="job-card">
         <img src="{{job.imageUrl}}" alt="Book 1">

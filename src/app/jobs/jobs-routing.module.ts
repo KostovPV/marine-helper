@@ -4,6 +4,13 @@ import { JobsListComponent } from './jobs-list/jobs-list.component';
 import { CurrentJobComponent } from './current-job/current-job.component';
 import { EditJobComponent } from './edit-job/edit-job.component';
 
+import {
+    canActivate,
+    redirectLoggedInTo,
+    redirectUnauthorizedTo,
+} from '@angular/fire/auth-guard';
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 
 const routes: Routes = [
@@ -16,10 +23,15 @@ const routes: Routes = [
     {
         path: 'list/:id',
         component: CurrentJobComponent,
+        ...canActivate(redirectUnauthorizedToLogin),
+
+
     },
     {
         path: 'list/:id/edit',
-        component: EditJobComponent
+        component: EditJobComponent,
+        ...canActivate(redirectUnauthorizedToLogin),
+
     }
 
 ];
