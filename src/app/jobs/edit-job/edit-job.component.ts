@@ -5,8 +5,10 @@ import { JobsStorageService } from '../jobs.service';
 import { NgForm } from '@angular/forms';
 import { Jobs } from 'src/app/models/jobs.model';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { combineLatest } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @UntilDestroy()
 @Component({
@@ -20,48 +22,46 @@ export class EditJobComponent implements OnInit {
   job: any;
   canEdit: boolean = false;
   userId: any;
-  isLoading: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private jobService: JobsStorageService,
-    private userservice: UsersService,
+    private authService: AuthService,
     private router: Router,
     private http: HttpClient
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     let author: string;
     this.activatedRoute.url.subscribe((sa) =>
       sa.forEach((value) => (this.url += `/${value}`))
     );
-    // this.activatedRoute.params.subscribe(p => this.id = p['id'])
+
     this.id = this.activatedRoute.snapshot.params['id'];
     this.activatedRoute.url.subscribe((sa) => {
       sa.forEach((value) => (this.url += `/${value}`));
     });
 
-    // Combined job and user subscriptions so there are no race conditions. Can also be done with combine latest rxjs operator
-    this.jobService
-      .getJob(this.id)
-      .pipe(
-        tap((job) => {
-          this.isLoading = false;
-          this.job = job;
-        }),
-        switchMap((job: any) =>
-          this.userservice.currentUserProfile$.pipe(
-            map((user) => {
-              if (!user) return false;
+    const job$ = this.jobService.getJob(this.id).pipe(
+      shareReplay(1),
+      tap((job) => {
+        this.job = job;
+      })
+    );
 
-              return user.uid === job.author;
-            })
-          )
-        )
-      )
-      .subscribe((canEdit) => {
-        this.canEdit = canEdit;
-      });
+  
+    const user$ = this.authService.currentUser$.pipe(
+      tap((user) => {
+        this.userId = user?.uid;
+      })
+    );
+
+
+    combineLatest([job$, user$]).subscribe(([job, user]) => {
+      if (user?.uid === job.author) {
+        this.canEdit = true;
+      }
+    });
   }
 
   editComponentSubmitHandler(job: Jobs) {
