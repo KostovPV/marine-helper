@@ -20,7 +20,7 @@ export class EditJobComponent implements OnInit {
   job: any;
   canEdit: boolean = false;
   userId: any;
-  isLoading: boolean = true;
+  // isLoading: boolean = true;
 
 
   constructor(
@@ -64,7 +64,7 @@ export class EditJobComponent implements OnInit {
       )
       .subscribe((canEdit) => {
         this.canEdit = canEdit;
-        this.isLoading = false;
+        // this.isLoading = false;
       });
   }
 
