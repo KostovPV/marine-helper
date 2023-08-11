@@ -36,14 +36,7 @@ export class JobsListComponent implements OnInit {
     private apiService: JobsStorageService,
     private userservice: UsersService,
 
-
-    // private userService: AuthService
   ) { }
-
-
-  // get isLogged(): boolean {
-  //   return this.userService.isLogged;
-  // }
 
 
   ngOnInit(): void {
@@ -67,6 +60,7 @@ export class JobsListComponent implements OnInit {
         }
         return jobsArray
       })).subscribe(jobs => {
+        this.isLoading = false;
         this.jobsList = jobs;
         console.log(jobs);
       });

@@ -8,14 +8,12 @@
   <nav>
     <ul>
       <li>
-        <a routerLink="/home">Home</a>
+        <a  routerLink="/home">Home</a>
       </li>
-      <li *ngIf="isAuthenticated">
+      <li >
         <a routerLink="/jobs/list">Opened jobs</a>
       </li>
-      <!-- <li>
-          <a routerLink="/find">Job seekers</a>
-        </li> -->
+      
       <li *ngIf="isAuthenticated">
         <a routerLink="/profile">My Profile</a>
       </li>

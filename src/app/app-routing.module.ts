@@ -12,7 +12,7 @@ import {
 import { ProfileComponent } from './components/profile/profile.component';
 import { CreateComponent } from './components/create/create.component';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['home']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
@@ -49,7 +49,6 @@ const routes: Routes = [
   {
     path: 'jobs',
     loadChildren: () => import('./jobs/jobs.module').then((m) => m.JobsModule),
-    ...canActivate(redirectUnauthorizedToLogin),
   },
 ];
 

@@ -20,6 +20,7 @@ export class EditJobComponent implements OnInit {
   job: any;
   canEdit: boolean = false;
   userId: any;
+  isLoading: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -27,7 +28,7 @@ export class EditJobComponent implements OnInit {
     private userservice: UsersService,
     private router: Router,
     private http: HttpClient
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     let author: string;
@@ -45,6 +46,7 @@ export class EditJobComponent implements OnInit {
       .getJob(this.id)
       .pipe(
         tap((job) => {
+          this.isLoading = false;
           this.job = job;
         }),
         switchMap((job: any) =>

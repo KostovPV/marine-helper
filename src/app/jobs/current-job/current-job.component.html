@@ -1,47 +1,9 @@
 
-<!-- <div class="job-render-container" style="background-image: url('https://www.man-es.com/images/default-source/marine-images/istock-868192214_interp_container-stage-neu.jpg?sfvrsn=e1911eba_0');">
-  <div class="content-overlay">
-    <h1>Job Information</h1>
-    <form >
-      <div class="form-group">
-        <label for="position">Position:</label>
-        <input type="text" {{job?.position}}>
-      </div>
-      <div class="form-group">
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" [(ngModel)]="job.age" required>
-      </div>
-      <div class="form-group">
-        <label for="company">Company:</label>
-        <input type="text" id="company" name="company" [(ngModel)]="job.company" required>
-      </div>
-      <div class="form-group">
-        <label for="image">Image:</label>
-        <input type="file" id="image" name="image" >
-      </div>
-      <div class="form-group">
-        <label for="telephone">Telephone:</label>
-        <input type="tel" id="telephone" name="telephone" [(ngModel)]="job.telephone" required>
-      </div>
-      <div class="form-group">
-        <label for="vesselType">Vessel Type:</label>
-        <input type="text" id="vesselType" name="vesselType" [(ngModel)]="job.vesselType" required>
-      </div>
-      <div class="form-group">
-        <label for="subscribers">Subscribers:</label>
-        <input type="number" id="subscribers" name="subscribers" [(ngModel)]="job.subscribers" required>
-      </div>
-
-      <div class="form-buttons">
-        <button type="submit" class="btn-save">Save</button>
-        <button type="button"  class="btn-delete" >Delete</button>
-        <button type="button"  class="btn-subscribe" >Subscribe</button>
-        <button type="button"  class="btn-view-jobs">View Other Jobs</button>
-      </div>
-    </form>
-  </div>
-</div> -->
 <div *ngIf="job" class="job-render-container">
+  <div *ngIf="isLoading">
+    <app-loader ></app-loader>
+</div>
+
   <div class="content-overlay">
     <!-- *ngIf="filteredSub" -->
     <div class="job-name">
