@@ -8,9 +8,9 @@ import {
     canActivate,
     redirectLoggedInTo,
     redirectUnauthorizedTo,
-  } from '@angular/fire/auth-guard';
-  const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
-  const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
+} from '@angular/fire/auth-guard';
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 
 const routes: Routes = [
@@ -23,13 +23,14 @@ const routes: Routes = [
     {
         path: 'list/:id',
         component: CurrentJobComponent,
-    ...canActivate(redirectUnauthorizedToLogin),
+        ...canActivate(redirectUnauthorizedToLogin),
+
 
     },
     {
         path: 'list/:id/edit',
         component: EditJobComponent,
-    ...canActivate(redirectUnauthorizedToLogin),
+        ...canActivate(redirectUnauthorizedToLogin),
 
     }
 
