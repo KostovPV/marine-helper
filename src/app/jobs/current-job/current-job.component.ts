@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobsStorageService } from '../jobs.service';
-import { Jobs } from 'src/app/models/jobs.model';
-import { UsersService } from 'src/app/services/users.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { combineLatest, map, shareReplay, tap } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
