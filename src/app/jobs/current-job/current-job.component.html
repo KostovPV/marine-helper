@@ -1,10 +1,12 @@
 
-<div *ngIf="job" class="job-render-container">
-  <!-- <div *ngIf="isLoading"> -->
-    <!-- <app-loader ></app-loader>
-</div> -->
 
-  <div class="content-overlay">
+
+<div  class="job-render-container">
+  <div *ngIf="isLoading">
+    <app-loader ></app-loader>
+  </div>
+
+  <div *ngIf="job" class="content-overlay">
     <!-- *ngIf="filteredSub" -->
     <div class="job-name">
       <a class="normal">

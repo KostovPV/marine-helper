@@ -1,7 +1,7 @@
 .form-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
   height: 100vh;
   align-items:flex-start ;
@@ -16,21 +16,24 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin: 0;
+  margin: auto;
 
   
 
 }
 
 .form-container {
-    display: block;
-    max-width: 300px;
-    margin: auto;
-  
-    background: #eceff1;
-    padding: 48px;
-    border-radius: 16px;
-  
+  flex-direction: column;
+  display: flex;
+  max-width: 300px;
+  margin-top: 20px;
+  margin-left:40%;
+
+  align-items: center;
+  justify-content: space-between;
+  background: #eceff1;
+  padding: 48px;
+  border-radius: 16px;
     mat-form-field {
       width: 100%;
     }

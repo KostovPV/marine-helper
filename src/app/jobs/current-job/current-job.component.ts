@@ -23,6 +23,8 @@ export class CurrentJobComponent implements OnInit {
   subscriptions: any;
   filteredSub: any;
   canSubscribe: boolean = false;
+  isLoading: boolean = true;
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -44,6 +46,8 @@ export class CurrentJobComponent implements OnInit {
     const job$ = this.jobService.getJob(this.id).pipe(
       shareReplay(1),
       tap((job) => {
+        this.isLoading = false;
+
         this.job = job;
         this.authorId = this.job?.author;
         this.job.id = this.id;

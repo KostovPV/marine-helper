@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  align-items:flex-start ;
+  align-items: flex-start;
   font-size: 20px;
   color: rgb(19, 15, 17);
   width: auto;
@@ -12,13 +12,13 @@
   justify-content: flex-start;
   width: auto;
 
-  /* Center and scale the image nicely */
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
 
-  
+
 
 }
 
@@ -26,22 +26,24 @@
   font-size: 1.2rem;
   margin-left: 8px;
 }
-.form-wrapper{
+
+.form-wrapper {
   display: flex;
   align-items: center;
 }
+
 .sign-up-link {
   font-size: 1.2rem;
   margin-left: 8px;
 }
+
 .form-container {
   flex-direction: column;
   display: flex;
   max-width: 300px;
-  // margin:0, auto;
   margin-top: 20px;
-align-items: center;
-justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   background: #eceff1;
   padding: 48px;
   border-radius: 16px;
