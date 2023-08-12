@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./current-job.component.css'],
 })
 export class CurrentJobComponent implements OnInit {
-  id: any;
+  id: string;
   url: string = '';
   job: any;
   canEdit: boolean = false;
@@ -46,6 +46,7 @@ export class CurrentJobComponent implements OnInit {
       tap((job) => {
         this.job = job;
         this.authorId = this.job?.author;
+        this.job.id = this.id;
       })
     );
 
@@ -78,20 +79,28 @@ export class CurrentJobComponent implements OnInit {
       }
 
       this.subscriptions = subs;
+      this.job = job;
+      console.log(this.job, 'this.job');
+      
+      console.log('this.subscriptions' ,this.subscriptions);
+      
+      console.log('this.job.id', this.job.id);
 
       this.filteredSub = this.subscriptions.filter(
-        (s: { authorId: string; jobId: string; id: string }) =>
-          s.jobId === job.id
+        
+        (s: { subscriberId: string; jobId: string; id: string }) =>
+       
+          s.jobId == this.job.id
       );
+      console.log('this.filteredSub', this.filteredSub);
 
       this.canSubscribe = false;
 
       const filteredJobs = this.filteredSub.filter(
-        (s: { authorId: string; jobId: string; id: string }) =>
-          s.authorId === user?.uid
+        (s: { jobId: string; subscriberId: string;  id: string }) =>
+          s.subscriberId === user?.uid
       );
       this.canSubscribe = filteredJobs.length === 0 ? true : false;
-      console.log('this.filteredSub', this.filteredSub);
       console.log('canSubscribe', this.canSubscribe);
     });
 
@@ -101,10 +110,10 @@ export class CurrentJobComponent implements OnInit {
 
   ngAfterViewInit() {}
 
-  onSubsriptionHandler(jobId: string, userId: string) {
-    console.log('jobId', jobId);
+  onSubsriptionHandler(id:string , userId: string) {
+    console.log('jobId', id);
     console.log('aurhorId', userId);
-    this.jobService.subscribeForJob(jobId, this.userId).subscribe(() => {
+    this.jobService.subscribeForJob(this.id, this.userId).subscribe(() => {
       // this.router.navigate([]);
       console.log('subscribed');
     });
