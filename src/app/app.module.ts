@@ -28,6 +28,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { CreateComponent } from './components/create/create.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 
@@ -41,6 +42,7 @@ import { CreateComponent } from './components/create/create.component';
     HomeComponent,
     ProfileComponent,
     CreateComponent,
+    NotFoundComponent,
 
   ],
   imports: [

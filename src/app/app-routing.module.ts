@@ -11,6 +11,7 @@ import {
 } from '@angular/fire/auth-guard';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CreateComponent } from './components/create/create.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['home']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path: 'jobs',
     loadChildren: () => import('./jobs/jobs.module').then((m) => m.JobsModule),
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 
