@@ -27,7 +27,6 @@ ngOnInit(): void {
       // this.userId = user.uid;
      
       this.userId = user.uid
-      console.log('this.userId', this.userId);
       
     })
 }

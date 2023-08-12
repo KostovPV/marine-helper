@@ -23,14 +23,10 @@ export class HeaderComponent implements OnInit, OnDestroy{
   ngOnInit(){
    this.userSub = this.authServise.currentUser$.subscribe(user=>{
     this.isAuthenticated = !user ? false : true;
-    console.log(user);
     
     this.email = user?.email;
     this.image = user?.photoURL;
 
-    console.log(user);
-    
-    // console.log(!!user);
    });
   }
 
@@ -41,9 +37,6 @@ export class HeaderComponent implements OnInit, OnDestroy{
     
   }
 
-  // get email():  {
-  //   return this.authServise.user?.username ;
-  // }
 
   onLogout() {
     this.authServise.logout();

@@ -3,16 +3,12 @@ import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 import { Jobs } from '../models/jobs.model';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { log } from 'console';
-import { ok } from 'assert';
+
 import { __await } from 'tslib';
 
 @Injectable({ providedIn: 'root' })
 export class JobsStorageService {
-  // user: any;
-
+  
   constructor(private http: HttpClient) {}
 
   subscribeForJob(jobId: string, subscriberId: string) {

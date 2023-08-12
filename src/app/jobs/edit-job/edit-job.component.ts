@@ -65,14 +65,6 @@ export class EditJobComponent implements OnInit {
   }
 
   editComponentSubmitHandler(job: Jobs) {
-    // console.log('jobForm.value' ,this.jobForm.value);
-    console.log(this.job);
-
-    // if (jobForm.invalid) {
-    //   return;
-    // }
-
-    console.log('userId', this.userId);
     this.jobService.editJob(this.id, this.userId, job).subscribe(() => {
       this.router.navigate(['/jobs/list/']);
     });
@@ -81,7 +73,7 @@ export class EditJobComponent implements OnInit {
   onDeleteHandler(id: string): void {
     if (confirm(`Are you sure you want to delete this job ?`)) {
       this.jobService.deleteJobById(id).subscribe(() => {
-        console.log('deleting completed');
+
         setTimeout(() => {
           this.router.navigate(['/home']);
         }, 1000);

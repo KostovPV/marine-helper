@@ -84,19 +84,14 @@ export class CurrentJobComponent implements OnInit {
 
       this.subscriptions = subs;
       this.job = job;
-      console.log(this.job, 'this.job');
-      
-      console.log('this.subscriptions' ,this.subscriptions);
-      
-      console.log('this.job.id', this.job.id);
-
+     
       this.filteredSub = this.subscriptions.filter(
         
         (s: { subscriberId: string; jobId: string; id: string }) =>
        
           s.jobId == this.job.id
       );
-      console.log('this.filteredSub', this.filteredSub);
+    
 
       this.canSubscribe = false;
 
@@ -105,21 +100,18 @@ export class CurrentJobComponent implements OnInit {
           s.subscriberId === user?.uid
       );
       this.canSubscribe = filteredJobs.length === 0 ? true : false;
-      console.log('canSubscribe', this.canSubscribe);
+     
     });
 
-    // const docRef = this.jobService.getJob$(this.id)
-    // console.log(docRef,'docRef');
   }
 
   ngAfterViewInit() {}
 
   onSubsriptionHandler(id:string , userId: string) {
-    console.log('jobId', id);
-    console.log('aurhorId', userId);
+  
     this.jobService.subscribeForJob(this.id, this.userId).subscribe(() => {
-      // this.router.navigate([]);
-      console.log('subscribed');
+      
+    
     });
   }
 }

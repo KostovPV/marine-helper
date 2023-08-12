@@ -45,8 +45,6 @@ export class JobsListComponent implements OnInit {
       .pipe(untilDestroyed(this), tap(console.log))
       .subscribe((user?) => {
         this.userId = user.uid;
-        console.log(this.userId);
-
       })
 
 
@@ -62,7 +60,7 @@ export class JobsListComponent implements OnInit {
       })).subscribe(jobs => {
         this.isLoading = false;
         this.jobsList = jobs;
-        console.log(jobs);
+     
       });
 
   }
