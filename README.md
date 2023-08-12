@@ -14,5 +14,4 @@ Back-end used is firebase Realtime Database.
 
 
 
-deployed in firebase:
-https://rate-53d91.web.app/
+
