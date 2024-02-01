@@ -47,9 +47,9 @@ export class SignUpComponent implements OnInit {
     private toast: HotToastService,
     private usersService: UsersService,
     private fb: NonNullableFormBuilder
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   get email() {
     return this.signUpForm.get('email');
@@ -79,6 +79,8 @@ export class SignUpComponent implements OnInit {
       .pipe(
         switchMap(({ user: { uid } }) =>
           this.usersService.addUser({ uid, email, displayName: name })
+
+
         ),
         this.toast.observe({
           success: 'Congrats! You are all signed up',

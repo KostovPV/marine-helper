@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-sign-up": {
+    "marine-helper": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-sign-up",
+            "outputPath": "dist/marine-helper",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -37,13 +37,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 }
               ],
               "fileReplacements": [
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-sign-up:build:production"
+              "browserTarget": "marine-helper:build:production"
             },
             "development": {
-              "browserTarget": "angular-sign-up:build:development"
+              "browserTarget": "marine-helper:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-sign-up:build"
+            "browserTarget": "marine-helper:build"
           }
         },
         "test": {
@@ -106,9 +106,9 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "browserTarget": "angular-sign-up:build:production",
-            "firebaseProject": "angular-sign-up",
-            "firebaseHostingSite": "angular-sign-up"
+            "browserTarget": "marine-helper:build:production",
+            "firebaseProject": "marine-helper",
+            "firebaseHostingSite": "marine-helper"
           }
         }
       }

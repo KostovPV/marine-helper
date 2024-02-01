@@ -1,4 +1,8 @@
 {
+  "projects": {
+    "default": "marine-helper",
+    "marine": "marine-helper"
+  },
   "targets": {
     "angular-sign-up": {
       "hosting": {
@@ -8,7 +12,5 @@
       }
     }
   },
-  "projects": {
-    "default": "angular-sign-up"
-  }
+  "etags": {}
 }
