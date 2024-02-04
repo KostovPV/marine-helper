@@ -55,5 +55,8 @@ CSS: Crafting a visually appealing and user-centric design.
 
 ## Home Page no user
 
+![home-page no user](https://github.com/KostovPV/marine-helper/assets/106186518/c9c9ea96-9d16-4667-b5c9-d482668939dc)
+
+
 
 
